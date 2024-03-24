@@ -1,0 +1,36 @@
+* {
+	padding: 0px;
+	margin: 0px;
+  }
+  
+  .header-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+  
+	height: 100px;
+	background-color: black;
+  }
+  
+  .Menu-icon {
+	color: white;
+	margin-left: 30px;
+  }
+  
+  .Title {
+	color: white;
+  }
+  
+  .search-bag-container {
+	color: white; 
+	margin-right: 30px;
+  
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+  
+	width: 50px;
+  
+	/* border: 1px solid white; */
+  }
