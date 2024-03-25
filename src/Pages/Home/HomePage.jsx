@@ -37,12 +37,29 @@ const HomePage = () => {
       <div className="model-image-backgound">
         <button className="shop-now-button">Shop Now</button>
       </div>
-
       {/* New arrivals card container */}
       <div className="new-arrivals-center-container">
         <div className="new-arrivals-container">
           <div className="new-arrival-title-container">
             <div className="new-arrival-title">New Arrivals</div>
+            <div className="new-arrival-subtitle">
+              Take a look at our newest arrivals before they run out of stock
+            </div>
+          </div>
+
+          <div className="arrival-cards-container">
+            {newArrivals.map((item, index) => (
+              <ArrivalCard itemData={item} key={index} />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Reviews Container */}
+      <div className="new-arrivals-center-container">
+        <div className="new-arrivals-container">
+          <div className="new-arrival-title-container">
+            <div className="new-arrival-title">Reviews</div>
             <div className="new-arrival-subtitle">
               Take a look at our newest arrivals before they run out of stock
             </div>
