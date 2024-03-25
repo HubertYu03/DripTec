@@ -1,0 +1,53 @@
+footer {
+    display: flex;
+    flex-direction: row;
+    background-color: lightblue;
+}
+
+.inline-div {
+    display: inline-block;
+    vertical-align: top;
+    padding-right: 100px;
+    padding-left: 100px;
+    margin: 20px;
+    
+}
+
+h3 {
+    padding-bottom: 15px;
+    font-size: 20px;
+    font-family: sans-serif;
+}
+
+p {
+    padding-bottom: 8px;
+}
+
+/*
+.SM-p {
+    padding-bottom: 8px;
+}
+*/
+
+.icons {
+    padding-right: 5px;
+    font-size: 23px;
+}
+
+.mail-icon {
+    padding-right: 5px;
+    font-size: 23px;
+    margin-bottom: -7px;
+}
+
+.phone-icon {
+    padding-right: 5px;
+    font-size: 23px;
+    margin-bottom: -7px;
+}
+
+/*
+.SUPPORT-p {
+    padding-bottom: 8px;
+}
+*/
