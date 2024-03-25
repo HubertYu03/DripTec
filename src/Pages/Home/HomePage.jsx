@@ -2,9 +2,11 @@
 import { supabase } from "../../Client";
 import { useEffect, useState } from "react";
 
+// importing components
+import ArrivalCard from "../../Components/ArrivalCard/ArrivalCard";
+
 // importing styles
 import "./HomePage.css";
-import ArrivalCard from "../../Components/ArrivalCard/ArrivalCard";
 
 const HomePage = () => {
   const [newArrivals, setNewArrivals] = useState([]);
