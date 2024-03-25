@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 // importing styles
 import "./HomePage.css";
+import ArrivalCard from "../../Components/ArrivalCard/ArrivalCard";
 
 const HomePage = () => {
   const [newArrivals, setNewArrivals] = useState([]);
@@ -30,9 +31,19 @@ const HomePage = () => {
 
   return (
     <div>
-      {newArrivals.map((item, index) => (
-        <div key={index}>{item.productName}</div>
-      ))}
+      <div>Model Images</div>
+      <div className="new-arrival-title-container">
+        <div className="new-arrival-title">New Arrivals</div>
+        <div className="new-arrival-subtitle">
+          Take a look at our newest arrivals before they run out of stock
+        </div>
+      </div>
+
+      <div className="arrival-cards-container">
+        {newArrivals.map((item, index) => (
+          <ArrivalCard itemData={item} key={index} />
+        ))}
+      </div>
     </div>
   );
 };

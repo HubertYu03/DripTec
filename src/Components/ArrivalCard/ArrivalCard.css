@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+.arrival-card-container {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    width: 350px;
+
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.arrival-card-image {
+    height: 300px;
+    padding: 30px;
+}
+
+.arrival-card-info {
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex: 1;
+
+    padding: 20px;
+    padding-bottom: 30px;
+
+    font-family: "Rubik", sans-serif;
+}
+
+.arrival-card-info-item-name {
+    font-weight: 450;
+    font-size: 18px;
+}
+
+.arrival-card-info-item-reviews {
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
+    color: orange;
+}
+
+.arrival-card-info-item-price {
+    font-weight: 100;
+    font-size: 14px;
+}
