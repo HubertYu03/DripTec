@@ -31,18 +31,27 @@ const HomePage = () => {
 
   return (
     <div>
-      <div>Model Images</div>
-      <div className="new-arrival-title-container">
-        <div className="new-arrival-title">New Arrivals</div>
-        <div className="new-arrival-subtitle">
-          Take a look at our newest arrivals before they run out of stock
-        </div>
+      {/* Model image container  */}
+      <div className="model-image-backgound">
+        <button className="shop-now-button">Shop Now</button>
       </div>
 
-      <div className="arrival-cards-container">
-        {newArrivals.map((item, index) => (
-          <ArrivalCard itemData={item} key={index} />
-        ))}
+      {/* New arrivals card container */}
+      <div className="new-arrivals-center-container">
+        <div className="new-arrivals-container">
+          <div className="new-arrival-title-container">
+            <div className="new-arrival-title">New Arrivals</div>
+            <div className="new-arrival-subtitle">
+              Take a look at our newest arrivals before they run out of stock
+            </div>
+          </div>
+
+          <div className="arrival-cards-container">
+            {newArrivals.map((item, index) => (
+              <ArrivalCard itemData={item} key={index} />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
