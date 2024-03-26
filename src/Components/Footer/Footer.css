@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
 footer {
     display: flex;
     flex-direction: row;
@@ -15,12 +17,17 @@ footer {
 
 h3 {
     padding-bottom: 15px;
-    font-size: 20px;
-    font-family: sans-serif;
+    font-family: "Rubik Mono One", monospace;
+    font-weight: 400;
+    font-style: normal;
 }
 
 p {
     padding-bottom: 8px;
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+    /*font-weight: <weight>;*/
+    font-style: normal;
 }
 
 /*
