@@ -1,0 +1,61 @@
+/* Import google font: Rubik */
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
+
+* {
+	padding: 0px;
+	margin: 0px;
+  }
+  
+  .header-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+  
+	height: 115px;
+
+	color: white;
+	background-color: black;
+  }
+  
+  .Menu-icon {
+	margin-left: 80px;
+
+	width: 140px;
+
+	font-size: 40px;
+	color: white;
+  }
+  
+  .Title {
+	font-size: 50px;
+	font-family: "Rubik Mono One", monospace;
+	color: white;
+  }
+  
+  .search-bag-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-right: 80px;
+
+	width: 140px;
+
+	font-size: 30px;
+	color: white; 
+  }
+
+  .secondheader-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 125px;
+
+	height: 60px;
+
+	font-size: 25px;
+	font-family: "Rubik Mono One", monospace;
+
+	border: 1px solid black;
+  }
