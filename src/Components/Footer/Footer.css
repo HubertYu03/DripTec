@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+footer {
+    display: flex;
+    flex-direction: row;
+    background-color: lightblue;
+}
+
+.inline-div {
+    display: inline-block;
+    vertical-align: top;
+    padding-right: 100px;
+    padding-left: 100px;
+    margin: 20px;
+    
+}
+
+h3 {
+    padding-bottom: 15px;
+    font-family: "Rubik Mono One", monospace;
+    font-weight: 400;
+    font-style: normal;
+}
+
+p {
+    padding-bottom: 8px;
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+    /*font-weight: <weight>;*/
+    font-style: normal;
+}
+
+/*
+.SM-p {
+    padding-bottom: 8px;
+}
+*/
+
+.icons {
+    padding-right: 5px;
+    font-size: 23px;
+}
+
+.mail-icon {
+    padding-right: 5px;
+    font-size: 23px;
+    margin-bottom: -7px;
+}
+
+.phone-icon {
+    padding-right: 5px;
+    font-size: 23px;
+    margin-bottom: -7px;
+}
+
+/*
+.SUPPORT-p {
+    padding-bottom: 8px;
+}
+*/
