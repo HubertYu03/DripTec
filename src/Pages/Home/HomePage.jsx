@@ -7,6 +7,7 @@ import ArrivalCard from "../../Components/ArrivalCard/ArrivalCard";
 
 // importing styles
 import "./HomePage.css";
+import ReviewCard from "../../Components/ReviewsCard/ReviewCard";
 
 const HomePage = () => {
   const [newArrivals, setNewArrivals] = useState([]);
@@ -61,14 +62,14 @@ const HomePage = () => {
           <div className="new-arrival-title-container">
             <div className="new-arrival-title">Reviews</div>
             <div className="new-arrival-subtitle">
-              Take a look at our newest arrivals before they run out of stock
+              Check out some recent reviews from our customers
             </div>
           </div>
 
           <div className="arrival-cards-container">
-            {newArrivals.map((item, index) => (
-              <ArrivalCard itemData={item} key={index} />
-            ))}
+            <ReviewCard />
+            <ReviewCard />
+            <ReviewCard />
           </div>
         </div>
       </div>
