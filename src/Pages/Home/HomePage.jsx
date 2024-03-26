@@ -33,7 +33,11 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div>
+    <div
+      style={{
+        marginBottom: "100px",
+      }}
+    >
       {/* Model image container  */}
       <div className="model-image-backgound">
         <button className="shop-now-button">Shop Now</button>
