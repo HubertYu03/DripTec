@@ -1,6 +1,7 @@
 // importing dependencies
-import { useNavigate } from "react-router-dom";
 import { IoStar } from "react-icons/io5";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 // importing styles
 import "./ArrivalCard.css";
@@ -13,7 +14,13 @@ const ArrivalCard = ({ itemData, category }) => {
   };
 
   return (
-    <div className="arrival-card-container" onClick={handleClick}>
+    <motion.div
+      className="arrival-card-container"
+      onClick={handleClick}
+      whileTap={{
+        scale: 0.95,
+      }}
+    >
       <img
         src={itemData.imageURL}
         alt="arrivalCardImage"
@@ -32,7 +39,7 @@ const ArrivalCard = ({ itemData, category }) => {
         </div>
         <div className="arrival-card-info-item-price">${itemData.price}</div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

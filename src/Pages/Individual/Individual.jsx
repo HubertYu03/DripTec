@@ -13,7 +13,6 @@ const Individual = () => {
       .from(Category)
       .select("*")
       .eq("id", id);
-    console.log(data[0]);
     setClothingData(data[0]);
   };
 
