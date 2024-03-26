@@ -12,13 +12,13 @@ const Individual = () => {
         <div className="Info-Container">
           <div className="General-Info">
             Title of Shirt
-            <div className="Stars">
+            {/* <div className="Stars">
               <FaRegStar />
               <FaRegStar />
               <FaRegStar />
               <FaRegStar />
               <FaRegStar />
-            </div>
+            </div> */}
             <div className="Cost">[Cost]</div>
             <div className="Sizes">
               <div className="Small">Small</div>
@@ -26,6 +26,12 @@ const Individual = () => {
               <div className="Large">Large</div>
             </div>
             <div className="Cart">Add to Cart</div>
+            <div className="Details">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia,
+              iusto dolores repellendus quisquam reprehenderit laboriosam sint
+              dolorum praesentium maxime amet nemo maiores dolorem, eveniet
+              itaque eligendi repellat temporibus aperiam. Ab?
+            </div>
           </div>
         </div>
       </div>

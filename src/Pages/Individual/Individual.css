@@ -15,7 +15,7 @@
 
 	width: 50%;
 
-	border: solid 1px red;
+	/* border: solid 1px red; */
 }
 
 .Big-Pic {
@@ -28,7 +28,7 @@
 	height: 70%;
 
 	background-color: gray;
-	border: solid 1px black;
+	/* border: solid 1px black; */
 }
 
 .Info-Container {
@@ -36,9 +36,10 @@
 	justify-content: left;
 	flex-direction: column;
 
+
 	width: 50%;
 
-	border: solid 1px black;
+	/* border: solid 1px black; */
 }
 
 .General-Info {
@@ -53,10 +54,10 @@
 
 	width: 45%;
 
-	border: solid 1px black;
-
 	font-family: "Rubik", sans-serif;
 	font-size: 30px;	
+
+	/* border: solid 1px black; */
 }
 
 .Cost {
@@ -124,4 +125,9 @@
 
 	font-family: "Rubik", sans-serif;
 	font-size: 24;
+}
+
+.Details{
+	font-family: "Rubik", sans-serif;
+	font-size: 20px;
 }
