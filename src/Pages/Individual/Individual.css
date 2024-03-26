@@ -1,6 +1,127 @@
-.Big-Picture{
-	width: 100px;
-	height: 100px;
+/* Import google font: Rubik */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
-	background-color: black;
-};
+.Page-Container {
+	display: flex;
+	flex-direction: row;
+
+	height: 1000px;
+
+}
+
+.Image-Container {
+	display: flex;
+	justify-content: right;
+
+	width: 50%;
+
+	border: solid 1px red;
+}
+
+.Big-Pic {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 10%;
+
+	width: 70%;
+	height: 70%;
+
+	background-color: gray;
+	border: solid 1px black;
+}
+
+.Info-Container {
+	display: flex;
+	justify-content: left;
+	flex-direction: column;
+
+	width: 50%;
+
+	border: solid 1px black;
+}
+
+.General-Info {
+	display: flex;
+	align-items: top;
+	justify-content: left;
+	flex-direction: column;
+	gap: 10px;
+
+	margin-left: 10%;
+	margin-top: 10%;
+
+	width: 45%;
+
+	border: solid 1px black;
+
+	font-family: "Rubik", sans-serif;
+	font-size: 30px;	
+}
+
+.Cost {
+	font-family: "Rubik", sans-serif;
+	font-size: 24px;
+}
+.Sizes {
+	display: flex;
+	justify-content: left;
+	gap: 5%;
+
+	font-family: "Rubik", sans-serif;
+	font-size: 19px;
+}
+
+.Small {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	width: 135px;
+	height: 43px;
+
+	border: 2px solid gray;
+	border-radius: 5px;
+}
+
+.Medium {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+
+	width: 135px;	
+	height: 43px;
+
+	border: 2px solid gray;
+	border-radius: 5px;
+}
+
+.Large{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	width: 135px;
+	height: 43px;
+
+	border: 2px solid gray;
+	border-radius: 5px;
+}
+
+.Cart{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	height: 60px;
+
+	border: 2px solid black;
+	border-radius: 10px;
+
+	color: white;
+	background-color: rgb(178, 4, 4);
+
+	font-family: "Rubik", sans-serif;
+	font-size: 24;
+}
