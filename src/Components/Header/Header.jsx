@@ -1,11 +1,9 @@
-import React from "react";
+import "./Header.css";
 
 //Icons
 import { FiMenu } from "react-icons/fi";
 import { FaSearch } from "react-icons/fa";
 import { MdOutlineShoppingBag } from "react-icons/md";
-
-import "./Header.css";
 
 const Header = () => {
   return (
