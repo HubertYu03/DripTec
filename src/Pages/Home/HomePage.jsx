@@ -11,10 +11,11 @@ import ReviewCard from "../../Components/ReviewsCard/ReviewCard";
 
 const HomePage = () => {
   const [newArrivals, setNewArrivals] = useState([]);
+  const newArrivalCategory = "Shirts";
 
   const fetchNewArrivals = async () => {
     let { data, error } = await supabase
-      .from("Shirts")
+      .from(newArrivalCategory)
       .select("*")
       .order("created_at", { ascending: false });
     if (error) {
@@ -54,7 +55,11 @@ const HomePage = () => {
 
           <div className="arrival-cards-container">
             {newArrivals.map((item, index) => (
-              <ArrivalCard itemData={item} key={index} />
+              <ArrivalCard
+                itemData={item}
+                category={newArrivalCategory}
+                key={index}
+              />
             ))}
           </div>
         </div>
