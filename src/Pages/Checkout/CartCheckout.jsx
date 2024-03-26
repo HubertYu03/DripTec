@@ -2,6 +2,9 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../../Client";
 
+// importing styles
+import "./CartCheckout.css";
+
 const CartCheckout = () => {
   const [cart, setCart] = useState([]);
 
@@ -21,7 +24,14 @@ const CartCheckout = () => {
     fetchShoppingCart();
   }, []);
 
-  return <div>Checkout</div>;
+  return (
+    <div className="checkout-page-container">
+      <div className="checkout-cart-list-container">
+        <div>Your Cart:</div>
+      </div>
+      <div>Checkout Details</div>
+    </div>
+  );
 };
 
 export default CartCheckout;
