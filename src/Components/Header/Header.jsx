@@ -26,7 +26,10 @@ const Header = () => {
         <div className="Title" onClick={() => handleClick("/")}>
           DRIPTEC
         </div>
-        <div className="search-bag-container">
+        <div
+          className="search-bag-container"
+          onClick={() => handleClick("checkout")}
+        >
           {/* <FaSearch /> */}
           <MdOutlineShoppingBag />
         </div>
