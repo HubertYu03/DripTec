@@ -98,8 +98,8 @@ const CartCheckout = () => {
       ) : (
         <div className="empty-cart-container">
           <div className="empty-cart-title">No items in Cart</div>
-          <div>Fill that cart up!</div>
-          <button>Coninue Shopping</button>
+          <div className="empty-cart-subtext">Fill that cart up!</div>
+          <button className="continue-shopping-button">Coninue Shopping</button>
         </div>
       )}
     </div>

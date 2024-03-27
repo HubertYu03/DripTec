@@ -67,4 +67,16 @@
 .empty-cart-title {
     font-family: "Rubik Mono One", monospace;
     font-size: 40px;
+    margin-bottom: 30px;
+}
+
+.empty-cart-subtext {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.continue-shopping-button {
+    width: 200px;
+    height: 50px;
+    border: none;
 }
