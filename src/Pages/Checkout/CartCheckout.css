@@ -1,9 +1,29 @@
 .checkout-page-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
+    margin-top: 70px;
 }
 
 .checkout-cart-list-container {
-    
+    display: flex;
+    flex-direction: column;
+
+    width: 550px;
+
+    /* border: 1px solid; */
+}
+
+.checkout-cart-list-title {
+    font-family: "Rubik Mono One", monospace;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.checkout-details-container {
+    width: 550px;
+
+    /* border: 1px solid; */
 }
