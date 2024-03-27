@@ -19,6 +19,7 @@
     justify-content: space-between;
     align-items: center;
 
+    width: 70%;
 
     padding: 30px;
 }
@@ -42,7 +43,7 @@
     font-family: "Rubik", sans-serif;
 
     height: 30px;
-    width: 50%;
+    width: 150px;
     
     border: none;
 }

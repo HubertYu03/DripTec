@@ -67,34 +67,40 @@ const CartCheckout = () => {
 
   return (
     <div className="checkout-page-container">
-      <div className="checkout-cart-list-container">
-        <div className="checkout-cart-list-title">Your Cart:</div>
-        <div>
-          {cart > 0
-            ? cart.map((item, index) => (
+      {cart != 0 ? (
+        <>
+          <div className="checkout-cart-list-container">
+            <div className="checkout-cart-list-title">Your Cart:</div>
+            <div>
+              {cart.map((item, index) => (
                 <CartCard itemData={item} key={index} />
-              ))
-            : "Nothing in cart"}
+              ))}
+            </div>
+          </div>
+          <div className="checkout-details-container">
+            <div className="order-summary-title">Order Summary</div>
+            <div className="order-summary-container">
+              <div className="order-summary-total-price">Price Total</div>
+              {priceDisplay(preTax, "Subtotal")}
+              {priceDisplay(tax, "Tax")}
+              {applyShippingFee
+                ? priceDisplay(shippingFee, "Shipping")
+                : priceDisplay(0, "Shipping")}
+              <hr
+                style={{
+                  marginBottom: "10px",
+                }}
+              />
+              {priceDisplay(priceTotal, "Total")}
+            </div>
+          </div>
+        </>
+      ) : (
+        <div>
+          <div>No items in Cart</div>
+          <button>Coninue Shopping</button>
         </div>
-      </div>
-      <div className="checkout-details-container">
-        <div className="order-summary-title">Order Summary</div>
-        <div className="order-summary-container">
-          <div className="order-summary-total-price">Price Total</div>
-          {priceDisplay(preTax, "Subtotal")}
-          {priceDisplay(tax, "Tax")}
-          {applyShippingFee
-            ? priceDisplay(shippingFee, "Shipping")
-            : priceDisplay(0, "Shipping")}
-          <hr
-            style={{
-              marginBottom: "10px",
-            }}
-          />
-          {priceDisplay(priceTotal, "Total")}
-          <div></div>
-        </div>
-      </div>
+      )}
     </div>
   );
 };
