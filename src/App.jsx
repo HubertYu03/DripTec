@@ -34,7 +34,10 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/shoppingCategories" element={<ShoppingCategories />} />
-          <Route path="/individualProduct" element={<Individiual />} />
+          <Route
+            path="/individualProduct/:Category/:id"
+            element={<Individiual />}
+          />
           <Route path="/checkout" element={<CartCheckout />} />
         </Routes>
         <Footer />

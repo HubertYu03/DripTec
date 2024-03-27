@@ -1,11 +1,18 @@
 import React from "react";
-
 import { IoStar } from "react-icons/io5";
+import { useNavigate, useParams } from "react-router-dom";
+
 import "./ArrivalCard.css";
 
-const ArrivalCard = ({ itemData }) => {
+const ArrivalCard = ({ itemData, category }) => {
+  let navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/individualProduct/${category}/${itemData.id}`);
+  };
+
   return (
-    <div className="arrival-card-container">
+    <div className="arrival-card-container" onClick={handleClick}>
       <img
         src={itemData.imageURL}
         alt="arrivalCardImage"

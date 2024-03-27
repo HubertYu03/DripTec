@@ -1,17 +1,42 @@
 import { FaRegStar } from "react-icons/fa";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { supabase } from "../../Client";
 
 import "./Individual.css";
 
 const Individual = () => {
+  const [clothingData, setClothingData] = useState({});
+  const [details, setDetails] = useState([]);
+
+  let { Category, id } = useParams();
+
+  const fetchClothingItem = async () => {
+    let { data, error } = await supabase
+      .from(Category)
+      .select("*")
+      .eq("id", id);
+    setClothingData(data[0]);
+    setDetails(data[0].details);
+  };
+
+  useEffect(() => {
+    fetchClothingItem();
+  }, []);
+
   return (
     <div>
       <div className="Page-Container">
         <div className="Image-Container">
-          <div className="Big-Pic"></div>
+          <img
+            src={clothingData.imageURL}
+            alt="productImage"
+            className="Big-Pic"
+          />
         </div>
         <div className="Info-Container">
           <div className="General-Info">
-            Title of Shirt
+            {clothingData.productName}
             {/* <div className="Stars">
               <FaRegStar />
               <FaRegStar />
@@ -19,18 +44,17 @@ const Individual = () => {
               <FaRegStar />
               <FaRegStar />
             </div> */}
-            <div className="Cost">[Cost]</div>
+            <div className="Cost">${clothingData.price}</div>
             <div className="Sizes">
               <div className="Small">Small</div>
               <div className="Medium">Medium</div>
               <div className="Large">Large</div>
             </div>
             <div className="Cart">Add to Cart</div>
-            <div className="Details">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia,
-              iusto dolores repellendus quisquam reprehenderit laboriosam sint
-              dolorum praesentium maxime amet nemo maiores dolorem, eveniet
-              itaque eligendi repellat temporibus aperiam. Ab?
+            <div className="Details-container">
+              {details.map((detail, index) => (
+                <div className="detail">- {detail}</div>
+              ))}
             </div>
           </div>
         </div>
