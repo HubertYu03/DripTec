@@ -25,7 +25,9 @@ const Header = () => {
         {loggedIn ? (
           <div className="UserName">John Doe</div>
         ) : (
-          <div className="UserName">Guest</div>
+          <div className="UserName" onClick={() => handleClick("/login")}>
+            Guest
+          </div>
         )}
         <div className="Title" onClick={() => handleClick("/")}>
           DRIPTEC
