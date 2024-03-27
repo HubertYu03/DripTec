@@ -8,22 +8,26 @@ import "./CartCheckout.css";
 import CartCard from "../../Components/CartCard/CartCard";
 
 const CartCheckout = () => {
+  // State for the current shopping cart
   const [cart, setCart] = useState([]);
+
+  // States for calculating price
   const [preTax, setPreTax] = useState(0);
   const [priceTotal, setPriceTotal] = useState(0);
   const [tax, setTax] = useState(0);
+  const [applyShippingFee, setApplyShippingFee] = useState(true);
+  const shippingFee = 6.99;
 
   const fetchShoppingCartData = async () => {
     let { data: Cart, error } = await supabase
       .from("Cart")
       .select("*")
-      .eq("sessionID", sessionStorage.getItem("sessionID"))
+      .eq("sessionID", localStorage.getItem("sessionID"))
       .order("created_at", { ascending: false });
 
     setCart(Cart);
 
     // Calculating price data
-
     // Pretax price
     let totalPreTax = 0;
     for (let i = 0; i < Cart.length; i++) {
@@ -31,12 +35,21 @@ const CartCheckout = () => {
     }
     setPreTax(totalPreTax);
 
+    // Apply shipping fee if the order is over 50 dollars
+    if (totalPreTax >= 50) {
+      setApplyShippingFee(false);
+    }
+
     // 3% sales tax
     let tax = Math.round(0.03 * totalPreTax * 100) / 100;
     setTax(tax);
 
-    // setting total price
-    setPriceTotal(totalPreTax + tax);
+    // setting total price depending on if applying shipping fee
+    if (applyShippingFee) {
+      setPriceTotal(totalPreTax + shippingFee + tax);
+    } else {
+      setPriceTotal(totalPreTax + tax);
+    }
   };
 
   const priceDisplay = (price, desc) => {
@@ -57,9 +70,11 @@ const CartCheckout = () => {
       <div className="checkout-cart-list-container">
         <div className="checkout-cart-list-title">Your Cart:</div>
         <div>
-          {cart.map((item, index) => (
-            <CartCard itemData={item} key={index} />
-          ))}
+          {cart > 0
+            ? cart.map((item, index) => (
+                <CartCard itemData={item} key={index} />
+              ))
+            : "Nothing in cart"}
         </div>
       </div>
       <div className="checkout-details-container">
@@ -68,6 +83,9 @@ const CartCheckout = () => {
           <div className="order-summary-total-price">Price Total</div>
           {priceDisplay(preTax, "Subtotal")}
           {priceDisplay(tax, "Tax")}
+          {applyShippingFee
+            ? priceDisplay(shippingFee, "Shipping")
+            : priceDisplay(0, "Shipping")}
           <hr
             style={{
               marginBottom: "10px",

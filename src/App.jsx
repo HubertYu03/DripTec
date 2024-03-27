@@ -15,20 +15,16 @@ import CartCheckout from "./Pages/Checkout/CartCheckout";
 
 // importing styles
 import "./App.css";
+import { supabase } from "./Client";
 
 function App() {
-  // Adding unique session id for guest users and for cart management
+  // Adding unique session id for each user
   useEffect(() => {
-    addEventListener("load", () => {
-      // if page was reloaded do nothing
-      if (sessionStorage.getItem("sessionID") != null) {
-        console.log("Welcome Back");
-      }
-      // if this was the first time the page was loaded, set a new session storage
-      else {
-        sessionStorage.setItem("sessionID", uuid());
-      }
-    });
+    if (localStorage.getItem("sessionID") != null) {
+      console.log("Welcome Back");
+    } else {
+      localStorage.setItem("sessionID", uuid());
+    }
   }, []);
 
   return (
