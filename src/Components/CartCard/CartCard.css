@@ -1,0 +1,55 @@
+.cart-card-container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 50px;
+
+    font-family: "Rubik", sans-serif;
+
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.card-card-img {
+    margin: 15px;
+    width: 30%;
+}
+
+.cart-card-container-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 70%;
+
+    padding: 30px;
+}
+
+.cart-card-info-container {
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+.cart-card-title{
+    font-size: 22px;
+}
+
+.cart-card-price {
+    font-size: 16px;
+}
+
+.cart-card-delete-btn {
+    font-family: "Rubik", sans-serif;
+
+    height: 30px;
+    width: 150px;
+    
+    border: none;
+}
+
+.cart-card-delete-btn:hover {
+    color: white;
+    background-color: black;
+    cursor: pointer;
+}

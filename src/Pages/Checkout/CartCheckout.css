@@ -1,0 +1,94 @@
+.checkout-page-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
+    font-family: "Rubik", sans-serif;
+
+    margin-top: 70px;
+}
+
+.checkout-cart-list-container {
+    display: flex;
+    flex-direction: column;
+
+    width: 550px;
+
+    /* border: 1px solid; */
+}
+
+.checkout-cart-list-title {
+    font-family: "Rubik Mono One", monospace;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.checkout-details-container {
+    width: 550px;
+    /* border: 1px solid; */
+
+}
+.order-summary-title {
+    font-family: "Rubik Mono One", monospace;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.order-summary-container {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    
+    padding: 20px;
+}
+
+.order-summary-total-price {
+    font-family: "Rubik", sans-serif;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.price-display-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.price-display-desc {
+    color: gray;
+}
+
+.empty-cart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-bottom: 100px;
+}
+
+.empty-cart-title {
+    font-family: "Rubik Mono One", monospace;
+    font-size: 40px;
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+.empty-cart-subtext {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.continue-shopping-button {
+    width: 200px;
+    height: 50px;
+
+    border: none;
+}
+
+.continue-shopping-button:hover {
+    cursor: pointer;
+
+    background-color: black;
+    color: white;
+}
