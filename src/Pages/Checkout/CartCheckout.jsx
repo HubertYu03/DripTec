@@ -52,6 +52,7 @@ const CartCheckout = () => {
     }
   };
 
+  // Small component that displays the prife
   const priceDisplay = (price, desc) => {
     return (
       <div className="price-display-container">
@@ -61,6 +62,7 @@ const CartCheckout = () => {
     );
   };
 
+  // Update cart info based on changes to the cart database
   useEffect(() => {
     fetchShoppingCartData();
   }, [cart]);
