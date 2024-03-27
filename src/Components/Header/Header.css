@@ -19,20 +19,32 @@
 	background-color: black;
   }
   
-  .Title {
+  .UserName {
+	display: flex;
+	flex-direction: row;
+	position: absolute;
+	left: 0;
+	margin-left: 10%;
 
+	font-family: "Rubik", sans-serif;
+	font-size: larger;
+
+  }
+
+  .Title {
 	font-size: 50px;
 	font-family: "Rubik Mono One", monospace;
 	color: white;
 	cursor: pointer;
+
   }
   
   .search-bag-container {
+	display: flex;
+	flex-direction: row;
 	position: absolute;
 	right: 0;
 	margin-right: 10%;
-	display: flex;
-	flex-direction: row;
 
 	font-size: 40px;
 	color: white; 
@@ -69,4 +81,10 @@
 
   .Pants{
 	cursor: pointer;
+  }
+
+  @media only screen and (max-width: 600px) {
+	.Title {
+		font-size: 30px;
+	}
   }

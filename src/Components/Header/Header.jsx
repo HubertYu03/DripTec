@@ -1,8 +1,6 @@
 import "./Header.css";
 
 //Icons
-import { FiMenu } from "react-icons/fi";
-import { FaSearch } from "react-icons/fa";
 import { MdOutlineShoppingBag } from "react-icons/md";
 
 //Navigate
@@ -10,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   let navigate = useNavigate();
+
+  const loggedIn = false;
 
   //   const handleClick = () => {
   // 	navigate("/");
@@ -22,7 +22,11 @@ const Header = () => {
   return (
     <div>
       <div className="header-container">
-        {/* <FiMenu className="Menu-icon" /> */}
+        {loggedIn ? (
+          <div className="UserName">John Doe</div>
+        ) : (
+          <div className="UserName">Guest</div>
+        )}
         <div className="Title" onClick={() => handleClick("/")}>
           DRIPTEC
         </div>
@@ -30,7 +34,6 @@ const Header = () => {
           className="search-bag-container"
           onClick={() => handleClick("checkout")}
         >
-          {/* <FaSearch /> */}
           <MdOutlineShoppingBag />
         </div>
       </div>
