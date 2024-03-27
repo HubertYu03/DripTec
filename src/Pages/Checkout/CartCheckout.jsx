@@ -96,8 +96,9 @@ const CartCheckout = () => {
           </div>
         </>
       ) : (
-        <div>
-          <div>No items in Cart</div>
+        <div className="empty-cart-container">
+          <div className="empty-cart-title">No items in Cart</div>
+          <div>Fill that cart up!</div>
           <button>Coninue Shopping</button>
         </div>
       )}
