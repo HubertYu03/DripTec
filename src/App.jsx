@@ -9,6 +9,7 @@ import Footer from "./Components/Footer/Footer";
 import HomePage from "./Pages/Home/HomePage";
 import ShoppingCategories from "./Pages/ShoppingCategories/ShoppingCategories";
 import Individiual from "./Pages/Individual/Individual";
+import LoginPage from "./Pages/LoginPage/LoginPage";
 
 import "./App.css";
 
@@ -19,6 +20,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/shoppingCategories" element={<ShoppingCategories />} />
           <Route path="/individualProduct" element={<Individiual />} />
         </Routes>
