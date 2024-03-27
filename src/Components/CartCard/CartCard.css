@@ -48,7 +48,7 @@
 }
 
 .cart-card-delete-btn:hover {
-    background-color: black;
     color: white;
+    background-color: black;
     cursor: pointer;
 }
