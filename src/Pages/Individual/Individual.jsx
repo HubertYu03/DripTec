@@ -37,13 +37,6 @@ const Individual = () => {
         <div className="Info-Container">
           <div className="General-Info">
             {clothingData.productName}
-            {/* <div className="Stars">
-              <FaRegStar />
-              <FaRegStar />
-              <FaRegStar />
-              <FaRegStar />
-              <FaRegStar />
-            </div> */}
             <div className="Cost">${clothingData.price}</div>
             <div className="Sizes">
               <div className="Small">Small</div>
@@ -53,7 +46,9 @@ const Individual = () => {
             <div className="Cart">Add to Cart</div>
             <div className="Details-container">
               {details.map((detail, index) => (
-                <div className="detail">- {detail}</div>
+                <div className="detail" key={index}>
+                  - {detail}
+                </div>
               ))}
             </div>
           </div>
