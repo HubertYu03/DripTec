@@ -8,6 +8,9 @@ import "./Individual.css";
 const Individual = () => {
   const [clothingData, setClothingData] = useState({});
   const [details, setDetails] = useState([]);
+  const [currentSize, setCurrentSize] = useState("");
+
+  const sizes = ["Small", "Medium", "Large"];
 
   let { Category, id } = useParams();
 
@@ -18,6 +21,29 @@ const Individual = () => {
       .eq("id", id);
     setClothingData(data[0]);
     setDetails(data[0].details);
+  };
+
+  const selectSize = (selection) => {
+    setCurrentSize(selection);
+    console.log("Current selected size: " + selection);
+  };
+
+  const addToBag = () => {
+    if (currentSize == "") {
+      alert("Please select a size");
+    } else {
+      const data = {
+        productName: clothingData.productName,
+        price: clothingData.price,
+        sessionID: localStorage.getItem("sessionID"),
+        imageURL: clothingData.imageURL,
+        itemID: clothingData.id,
+        category: Category,
+        size: currentSize,
+      };
+
+      console.log(data);
+    }
   };
 
   useEffect(() => {
@@ -36,20 +62,39 @@ const Individual = () => {
         </div>
         <div className="Info-Container">
           <div className="General-Info">
-            {clothingData.productName}
-            <div className="Cost">${clothingData.price}</div>
-            <div className="Sizes">
-              <div className="Small">Small</div>
-              <div className="Medium">Medium</div>
-              <div className="Large">Large</div>
+            <div className="General-info-header">
+              <div>{clothingData.productName}</div>
+              <div className="Cost">${clothingData.price}</div>
+              <div className="Details-container">
+                {details.map((detail, index) => (
+                  <div className="detail" key={index}>
+                    - {detail}
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="Cart">Add to Cart</div>
-            <div className="Details-container">
-              {details.map((detail, index) => (
-                <div className="detail" key={index}>
-                  - {detail}
-                </div>
-              ))}
+            <div className="Order-parameters">
+              {/* size buttons */}
+              <div className="Sizes">
+                {sizes.map((size, index) => (
+                  <button
+                    className={`${
+                      size == currentSize
+                        ? "size-button-selected"
+                        : "size-button"
+                    }`}
+                    key={index}
+                    onClick={() => selectSize(size)}
+                  >
+                    {size}
+                  </button>
+                ))}
+              </div>
+              {/* Add to cart buttons */}
+              <button className="Cart" onClick={addToBag}>
+                Add to Cart
+              </button>
+              {/* successfully added to cart message */}
             </div>
           </div>
         </div>
