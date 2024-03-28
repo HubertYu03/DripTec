@@ -9,11 +9,7 @@ import { useNavigate } from "react-router-dom";
 const Header = () => {
   let navigate = useNavigate();
 
-  const loggedIn = false;
-
-  //   const handleClick = () => {
-  // 	navigate("/");
-  //   };
+  const loggedIn = true;
 
   const handleClick = (route) => {
     navigate(route);
