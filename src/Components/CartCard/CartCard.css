@@ -28,7 +28,7 @@
     display: flex;
     flex-direction: column;
 
-    gap: 20px;
+    gap: 10px;
 }
 
 .cart-card-title{
@@ -37,6 +37,11 @@
 
 .cart-card-price {
     font-size: 16px;
+}
+
+.cart-card-size {
+    font-weight: 200;
+    color: gray;
 }
 
 .cart-card-delete-btn {
