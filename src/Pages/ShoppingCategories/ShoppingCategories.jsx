@@ -12,7 +12,7 @@ const HomePage = () => {
   const [newShoppingCategories, setNewShoppingCategories] = useState([]);
   const [typePreferences, setTypePreferences] = useState({
     shirts: false,
-    hoodies: true,
+    hoodies: false,
     pants: false,
   });
 
