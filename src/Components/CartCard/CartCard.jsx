@@ -21,6 +21,7 @@ const CartCard = ({ itemData }) => {
         <div className="cart-card-info-container">
           <div className="cart-card-title">{itemData.productName}</div>
           <div className="cart-card-price">${itemData.price}</div>
+          <div className="cart-card-size">{itemData.size}</div>
         </div>
         <button className="cart-card-delete-btn" onClick={removeItemFromCart}>
           Remove Item
