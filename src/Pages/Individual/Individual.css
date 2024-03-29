@@ -4,60 +4,73 @@
 .Page-Container {
 	display: flex;
 	flex-direction: row;
+	justify-content: space-evenly;
 
-	height: 1000px;
-
+	margin-top: 100px;
+	margin-bottom: 200px;
 }
 
 .Image-Container {
 	display: flex;
-	justify-content: right;
+	justify-content: center;
+	align-items: center;
+	
+	padding: 20px;
 
-	width: 50%;
+	width: 40%;
+	height: 600px;
 
-	/* border: solid 1px red; */
+	/* border: solid 1px black; */
 }
 
 .Big-Pic {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin-top: 10%;
 
-	width: 70%;
-	height: 70%;
+	padding: 10px;
 
-	background-color: gray;
+	width: 500px;
+
 	/* border: solid 1px black; */
 }
 
 .Info-Container {
 	display: flex;
-	justify-content: left;
 	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
 
+	width: 500px;
 
-	width: 50%;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
 	/* border: solid 1px black; */
 }
 
 .General-Info {
 	display: flex;
-	align-items: top;
-	justify-content: left;
 	flex-direction: column;
-	gap: 10px;
+	justify-content: space-around;
 
-	margin-left: 10%;
-	margin-top: 10%;
-
-	width: 45%;
+	width: 80%;
+	height: 90%;
 
 	font-family: "Rubik", sans-serif;
 	font-size: 30px;	
 
 	/* border: solid 1px black; */
+}
+
+.General-info-header {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+
+	height: 45%;
+
+	/* border: solid 1px; */
+
 }
 
 .Cost {
@@ -73,7 +86,15 @@
 	font-size: 19px;
 }
 
-.Small {
+.Order-parameters {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	height: 23%;
+}
+
+.size-button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -81,24 +102,15 @@
 	width: 135px;
 	height: 43px;
 
-	border: 2px solid gray;
+	border: none;
 	border-radius: 5px;
+
+	font-family: "Rubik", sans-serif;
+	
+	transition: 0.2s;
 }
 
-.Medium {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
-
-	width: 135px;	
-	height: 43px;
-
-	border: 2px solid gray;
-	border-radius: 5px;
-}
-
-.Large{
+.size-button-selected {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -106,8 +118,19 @@
 	width: 135px;
 	height: 43px;
 
-	border: 2px solid gray;
+	border: none;
 	border-radius: 5px;
+
+	background-color: black;
+	color: white;
+
+	font-family: "Rubik", sans-serif;
+}
+
+.size-button:hover {
+	cursor: pointer;
+	background-color: black;
+	color: white;
 }
 
 .Cart{
@@ -117,17 +140,42 @@
 
 	height: 60px;
 
-	border: 2px solid black;
+	border: none;
 	border-radius: 10px;
 
 	color: white;
-	background-color: rgb(178, 4, 4);
+	background-color: rgb(194, 0, 0);
 
 	font-family: "Rubik", sans-serif;
-	font-size: 24;
+	font-size: 24px;
+
+	transition: 0.2s;
 }
 
-.Details{
+.Cart:hover {
+	cursor: pointer;
+
+	background-color: rgb(138, 1, 1);
+}
+
+.Details-container{
+	font-family: "Rubik", sans-serif;
+	font-size: 16px;	
+	font-weight: 100;
+	color: gray;
+
+	display: flex;
+	flex-direction: column;
+}
+
+.detail {
+	margin-bottom: 10px;
+}
+
+.success-container {
+	margin-bottom: 40px;
+
 	font-family: "Rubik", sans-serif;
 	font-size: 20px;
+	color: rgb(194, 0, 0);
 }
