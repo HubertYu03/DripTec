@@ -1,11 +1,11 @@
-body {
+.shopping-categories-body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
 }
 
-.shopping-categories-cpntainer {
+.shopping-categories-container {
     flex: 1;
 }
 
@@ -28,7 +28,7 @@ fieldset {
 input {
     margin-top: 5px;
     margin-bottom: 5px;
-    margin-left: -240px;
+    margin-left: -160px;
     flex: 1;
 }
 
@@ -51,9 +51,6 @@ label {
     padding-top: 20px;
     padding-bottom: 20px;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
 .new-products-center-container {
     display: flex;

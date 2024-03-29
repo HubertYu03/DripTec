@@ -15,6 +15,15 @@ const HomePage = () => {
     hoodies: false,
     pants: false,
   });
+  const [sortPreference, setSortPreference] = useState({
+    bestSelling: false,
+    aToZ: false,
+    zToA: false,
+    lowToHigh: false,
+    highToLow: false,
+    oldToNew: false,
+    newToOld: false,
+  });
 
   // checkbox fieldset onClick
   const handleTypePreferences = (event) => {
@@ -22,10 +31,17 @@ const HomePage = () => {
     setTypePreferences({ ...typePreferences, [id]: checked });
   };
 
+  // radio fieldset onClick
+  const handleSortPreference = (event) => {
+    const { id, checked } = event.target;
+    setSortPreference({ [id]: checked });
+  };
+
   // fetch selected products
   const fetchNewShoppingCategories = async () => {
     let newShoppingCategoriesList = [];
 
+    // product type
     if (typePreferences.shirts) {
       await fetchShirts(newShoppingCategoriesList);
     }
@@ -36,6 +52,34 @@ const HomePage = () => {
 
     if (typePreferences.pants) {
       await fetchPants(newShoppingCategoriesList);
+    }
+
+    // sort by
+    if (sortPreference.bestSelling) {
+      await newShoppingCategoriesList.sort(
+        (a, b) => b.total_ordered - a.total_ordered
+      );
+    } else if (sortPreference.aToZ) {
+      await newShoppingCategoriesList.sort((a, b) =>
+        a.productName.localeCompare(b.productName)
+      );
+    } else if (sortPreference.zToA) {
+      await newShoppingCategoriesList.sort((a, b) =>
+        b.productName.localeCompare(a.productName)
+      );
+    } else if (sortPreference.lowToHigh) {
+      await newShoppingCategoriesList.sort((a, b) => a.price - b.price);
+    } else if (sortPreference.highToLow) {
+      // newShoppingCategoriesList.order("price", {ascending: false});
+      await newShoppingCategoriesList.sort((a, b) => b.price - a.price);
+    } else if (sortPreference.oldToNew) {
+      await newShoppingCategoriesList.sort(
+        (a, b) => new Date(a.created_at) - new Date(b.created_at)
+      );
+    } else if (sortPreference.newToOld) {
+      await newShoppingCategoriesList.sort(
+        (a, b) => new Date(b.created_at) - new Date(a.created_at)
+      );
     }
 
     setNewShoppingCategories(newShoppingCategoriesList);
@@ -76,11 +120,11 @@ const HomePage = () => {
 
   useEffect(() => {
     fetchNewShoppingCategories();
-  }, [typePreferences]);
+  }, [sortPreference, typePreferences]);
 
   return (
-    <body>
-      <div className="shopping-categories-cpntainer">
+    <div className="shopping-categories-body">
+      <div className="shopping-categories-container">
         <div className="fieldsets">
           <p>Product Type</p>
           <fieldset className="product-type">
@@ -112,44 +156,61 @@ const HomePage = () => {
           <p>Sort By</p>
           <fieldset className="sortBy">
             <input
-              id="best-selling"
+              id="bestSelling"
               type="radio"
               name="sort"
-              value="best-selling"
+              value="bestSelling"
+              onClick={handleSortPreference}
             />
-            <label for="best-selling">Best Selling</label>
-            <input id="a-z" type="radio" name="sort" value="a-z" />
-            <label for="a-z">Alphabetically, A-Z</label>
-            <input id="z-a" type="radio" name="sort" value="z-a" />
-            <label for="z-a">Alphabetically, Z-A</label>
+            <label for="bestSelling">Best Selling</label>
             <input
-              id="low-to-high"
+              id="aToZ"
               type="radio"
               name="sort"
-              value="low-to-high"
+              value="aToZ"
+              onClick={handleSortPreference}
             />
-            <label for="low-to-high">Price, Low to High</label>
+            <label for="aToZ">Alphabetically, A-Z</label>
             <input
-              id="high-to-low"
+              id="zToA"
               type="radio"
               name="sort"
-              value="high-to-low"
+              value="zToA"
+              onClick={handleSortPreference}
             />
-            <label for="high-to-low">Price, High to Low</label>
+            <label for="zToA">Alphabetically, Z-A</label>
             <input
-              id="old-to-new"
+              id="lowToHigh"
               type="radio"
               name="sort"
-              value="old-to-new"
+              value="lowToHigh"
+              onClick={handleSortPreference}
             />
-            <label for="old-to-new">Date, Old to New</label>
+            <label for="lowToHigh">Price, Low to High</label>
             <input
-              id="new-to-old"
+              id="highToLow"
               type="radio"
               name="sort"
-              value="new-to-old"
+              value="highToLow"
+              onClick={handleSortPreference}
             />
-            <label for="new-to-old">Date, New to Old</label>
+            <label for="highToLow">Price, High to Low</label>
+            <input
+              id="oldToNew"
+              type="radio"
+              name="sort"
+              value="oldToNew"
+              onClick={handleSortPreference}
+            />
+            <label for="oldToNew">Date, Old to New</label>
+            <input
+              id="newToOld"
+              type="radio"
+              name="sort"
+              value="newToOld"
+              onClick={handleSortPreference}
+            />
+            <label for="newToOld">Date, New to Old</label>
           </fieldset>
         </div>
 
@@ -176,7 +237,7 @@ const HomePage = () => {
           <p>n product</p>
         </div>
       </div>
-    </body>
+    </div>
   );
 };
 
