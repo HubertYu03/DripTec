@@ -1,3 +1,14 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.shopping-categories-cpntainer {
+    flex: 1;
+}
+
 .fieldsets {
     padding-top: 50px;
 }
