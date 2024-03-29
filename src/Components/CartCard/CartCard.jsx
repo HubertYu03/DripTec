@@ -12,6 +12,8 @@ const CartCard = ({ itemData }) => {
       .from("Cart")
       .delete()
       .eq("id", itemData.id);
+
+    window.location.reload();
   };
 
   return (

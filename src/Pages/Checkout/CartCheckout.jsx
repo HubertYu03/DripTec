@@ -18,6 +18,28 @@ const CartCheckout = () => {
   const [applyShippingFee, setApplyShippingFee] = useState(true);
   const shippingFee = 6.99;
 
+  const calcuatePrice = (pretotal) => {
+    setPreTax(pretotal);
+
+    // Apply shipping fee if the order is over 50 dollars
+    if (pretotal >= 50) {
+      setApplyShippingFee(false);
+    }
+
+    // 3% sales tax
+    let tax = Math.round(0.03 * pretotal * 100) / 100;
+    setTax(tax);
+
+    // setting total price depending on if applying shipping fee
+    if (applyShippingFee) {
+      setPriceTotal(
+        Math.round((pretotal + shippingFee + tax + Number.EPSILON) * 100) / 100
+      );
+    } else {
+      Math.round((pretotal + tax + Number.EPSILON) * 100) / 100;
+    }
+  };
+
   const fetchShoppingCartData = async () => {
     let { data: Cart, error } = await supabase
       .from("Cart")
@@ -25,30 +47,22 @@ const CartCheckout = () => {
       .eq("sessionID", localStorage.getItem("sessionID"))
       .order("created_at", { ascending: false });
 
-    setCart(Cart);
+    if (error == null) {
+      setCart(Cart);
 
-    // Calculating price data
-    // Pretax price
-    let totalPreTax = 0;
-    for (let i = 0; i < Cart.length; i++) {
-      totalPreTax += Cart[i].price;
-    }
-    setPreTax(totalPreTax);
+      // Calculating price data
+      // Pretax price
+      let totalPreTax = 0;
+      for (let i = 0; i < Cart.length; i++) {
+        totalPreTax += Cart[i].price;
+      }
 
-    // Apply shipping fee if the order is over 50 dollars
-    if (totalPreTax >= 50) {
-      setApplyShippingFee(false);
-    }
+      // accurate rounding
+      totalPreTax = Math.round((totalPreTax + Number.EPSILON) * 100) / 100;
 
-    // 3% sales tax
-    let tax = Math.round(0.03 * totalPreTax * 100) / 100;
-    setTax(tax);
-
-    // setting total price depending on if applying shipping fee
-    if (applyShippingFee) {
-      setPriceTotal(totalPreTax + shippingFee + tax);
+      calcuatePrice(totalPreTax);
     } else {
-      setPriceTotal(totalPreTax + tax);
+      console.error(error);
     }
   };
 
