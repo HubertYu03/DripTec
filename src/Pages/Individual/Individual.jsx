@@ -9,6 +9,7 @@ const Individual = () => {
   const [clothingData, setClothingData] = useState({});
   const [details, setDetails] = useState([]);
   const [currentSize, setCurrentSize] = useState("");
+  const [success, setSuccess] = useState(false);
 
   const sizes = ["Small", "Medium", "Large"];
 
@@ -28,7 +29,7 @@ const Individual = () => {
     console.log("Current selected size: " + selection);
   };
 
-  const addToBag = () => {
+  const addToBag = async () => {
     if (currentSize == "") {
       alert("Please select a size");
     } else {
@@ -43,11 +44,21 @@ const Individual = () => {
       };
 
       console.log(data);
+
+      const { newData, error } = await supabase
+        .from("Cart")
+        .insert([data])
+        .select();
+
+      if (error == null) {
+        setSuccess(true);
+      }
     }
   };
 
   useEffect(() => {
     fetchClothingItem();
+    setSuccess(false);
   }, []);
 
   return (
@@ -94,9 +105,11 @@ const Individual = () => {
               <button className="Cart" onClick={addToBag}>
                 Add to Cart
               </button>
-              {/* successfully added to cart message */}
             </div>
           </div>
+          {success && (
+            <div className="success-container">Successfully Added to Cart</div>
+          )}
         </div>
       </div>
     </div>
