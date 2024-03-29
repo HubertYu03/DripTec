@@ -43,7 +43,7 @@
 
 .order-summary-total-price {
     font-family: "Rubik", sans-serif;
-    font-size: 28px;
+    font-size: 40px;
     margin-bottom: 20px;
 }
 
@@ -92,3 +92,80 @@
     background-color: black;
     color: white;
 }
+
+/* Form styling */
+
+.payment-container {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 80px;
+}
+
+.form-section-title {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.form-section-text {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.email-form-container {
+    display: flex;
+    flex-direction: column;
+
+    width: 50%;
+    gap: 10px;
+}
+
+.input-field {
+    border: none;
+    background: rgb(225, 225, 225);
+
+    height: 20px;
+    padding: 5px;
+}
+
+.invalid-email {
+    color: red;
+    font-size: 14px;
+}
+
+.form-names-input-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    width: 100%;
+}
+
+.name-input-container {
+    display: flex;
+    flex-direction: column;
+
+    width: 45%;
+
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.street-input-container {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+
+.input-field-address {
+    border: none;
+    background: rgb(225, 225, 225);
+    height: 20px;
+    padding: 5px;
+}
+

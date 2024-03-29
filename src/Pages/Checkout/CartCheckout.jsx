@@ -15,7 +15,21 @@ const CartCheckout = () => {
   const [priceTotal, setPriceTotal] = useState(0);
   const [tax, setTax] = useState(0);
   const [applyShippingFee, setApplyShippingFee] = useState(true);
-  const shippingFee = 6.99;
+  const shippingFee = 3.99;
+
+  // Payment form intormation
+  const emailRegex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
+  const [validEmail, setValidEmail] = useState();
+  const [userEmail, setUserEmail] = useState("");
+
+  const handleEmail = (event) => {
+    setUserEmail(event.target.value);
+    if (!emailRegex.test(event.target.value)) {
+      setValidEmail(false);
+    } else {
+      setValidEmail(true);
+    }
+  };
 
   const calcuatePrice = (pretotal) => {
     setPreTax(pretotal);
@@ -27,7 +41,7 @@ const CartCheckout = () => {
 
     // 3% sales tax
     let tax = Math.round(0.03 * pretotal * 100) / 100;
-    setTax(tax);
+    setTax(tax.toFixed(2));
 
     // setting total price depending on if applying shipping fee
     if (applyShippingFee) {
@@ -107,6 +121,46 @@ const CartCheckout = () => {
                 }}
               />
               {priceDisplay(priceTotal, "Total")}
+              <div className="payment-container">
+                <div className="form-section-title">Delivery Information</div>
+                <div className="email-form-container">
+                  {/* Customer Email */}
+                  <label>Email</label>
+                  <input
+                    type="text"
+                    autoComplete="off"
+                    className="input-field"
+                    onChange={(event) => handleEmail(event)}
+                  />
+                  {!validEmail && userEmail != "" && (
+                    <div className="invalid-email">Not a valid email!</div>
+                  )}
+                </div>
+                <hr
+                  style={{
+                    marginTop: "30px",
+                    marginBottom: "20px",
+                  }}
+                />
+                {/* Address input */}
+                <div className="address-form-container">
+                  <div className="form-section-text">Delivery Address</div>
+                  <div className="form-names-input-container">
+                    <div className="name-input-container">
+                      <div>First Name</div>
+                      <input type="text" className="input-field" />
+                    </div>
+                    <div className="name-input-container">
+                      <div>Last Name</div>
+                      <input type="text" className="input-field" />
+                    </div>
+                  </div>
+                  <div className="street-input-container">
+                    <div>Street Address</div>
+                    <input type="text" className="input-field-address" />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </>
