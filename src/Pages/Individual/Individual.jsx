@@ -26,7 +26,6 @@ const Individual = () => {
 
   const selectSize = (selection) => {
     setCurrentSize(selection);
-    console.log("Current selected size: " + selection);
   };
 
   const addToBag = async () => {
@@ -42,8 +41,6 @@ const Individual = () => {
         category: Category,
         size: currentSize,
       };
-
-      console.log(data);
 
       const { newData, error } = await supabase
         .from("Cart")
