@@ -1,7 +1,6 @@
 // importing libraries
 import { useEffect, useState } from "react";
 import { supabase } from "../../Client";
-import { motion } from "framer-motion";
 
 // importing styles
 import "./CartCheckout.css";
