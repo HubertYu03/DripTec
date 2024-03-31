@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../../Client";
 import { useNavigate } from "react-router-dom";
+import { v4 as uuid } from "uuid";
 
 // importing styles
 import "./CartCheckout.css";
@@ -391,7 +392,7 @@ const CartCheckout = () => {
   const [confirmButtonClicked, setConfirmButtonClicked] = useState(false);
   const [canOrder, setCanOrder] = useState();
 
-  const confirmOrder = () => {
+  const confirmOrder = async () => {
     setConfirmButtonClicked(true);
     if (
       userEmail == "" ||
@@ -401,7 +402,10 @@ const CartCheckout = () => {
       deliveryCity == "" ||
       deliveryCity == "" ||
       deliveryZipCode == "" ||
-      userPhoneNum == ""
+      userPhoneNum == "" ||
+      !validEmail ||
+      !validZipCode ||
+      !validPhoneNum
     ) {
       setCanOrder(false);
       console.log("Not all fields have been filled out");
@@ -419,6 +423,29 @@ const CartCheckout = () => {
       };
       setCanOrder(true);
       console.log(orderData);
+
+      const { data, error } = await supabase
+        .from("Orders")
+        .insert([
+          {
+            email: userEmail,
+            username: firstName + " " + lastName,
+            itemsData: cart,
+            cost: priceTotal,
+            paymentInfo: null,
+            address: {
+              street: deliveryStreetAddress,
+              apartment: deliveryApartment,
+              city: deliveryCity,
+              state: deliveryState,
+              zipCode: deliveryZipCode,
+            },
+            trackingNumber: uuid(),
+            payed: false,
+          },
+        ])
+        .select();
+
       navigate("/payment");
     }
   };
@@ -598,7 +625,7 @@ const CartCheckout = () => {
                 </button>
                 {!canOrder && confirmButtonClicked && (
                   <div className="fields-not-filled-error">
-                    Not all fields have been filled out!
+                    Not all fields have been filled out or field errors!
                   </div>
                 )}
               </div>
