@@ -43,7 +43,7 @@
 
 .order-summary-total-price {
     font-family: "Rubik", sans-serif;
-    font-size: 28px;
+    font-size: 40px;
     margin-bottom: 20px;
 }
 
@@ -92,3 +92,129 @@
     background-color: black;
     color: white;
 }
+
+/* Form styling */
+
+.payment-container {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 80px;
+}
+
+.form-section-title {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.form-section-text {
+    font-size: 30px;
+}
+
+.form-section-subtext {
+    font-size: 14px;
+    color: gray;
+}
+
+.email-form-container {
+    display: flex;
+    flex-direction: column;
+
+    width: 50%;
+    gap: 10px;
+}
+
+.input-field {
+    border: none;
+    background: rgb(225, 225, 225);
+
+    height: 20px;
+    padding: 5px;
+}
+
+.state-dropdown {
+    border: none;
+    background: rgb(225, 225, 225);
+
+    height: 30px;
+    padding: 5px;
+}
+
+.invalid-email {
+    color: red;
+    font-size: 14px;
+}
+
+.delivery-form-header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.form-names-input-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    width: 100%;
+}
+
+.name-input-container {
+    display: flex;
+    flex-direction: column;
+
+    width: 48%;
+
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.street-input-container {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+
+.input-field-address {
+    border: none;
+    background: rgb(225, 225, 225);
+    height: 20px;
+    padding: 5px;
+}
+
+.confirm-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+
+    margin-top: 20px;
+}
+
+.confirm-order-button {
+    border: none;
+
+    font-family: "Rubik", sans;
+
+    width: 150px;
+    height: 40px;
+    
+    transition: 0.2s;
+}
+
+.confirm-order-button:hover {
+    cursor: pointer;
+    color: white;
+    background: black;
+}
+
+.fields-not-filled-error {
+    color: red;
+}
+
