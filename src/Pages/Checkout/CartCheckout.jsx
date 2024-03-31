@@ -1,12 +1,15 @@
 // importing libraries
 import { useEffect, useState } from "react";
 import { supabase } from "../../Client";
+import { useNavigate } from "react-router-dom";
 
 // importing styles
 import "./CartCheckout.css";
 import CartCard from "../../Components/CartCard/CartCard";
 
 const CartCheckout = () => {
+  let navigate = useNavigate();
+
   // State for the current shopping cart
   const [cart, setCart] = useState([]);
 
@@ -17,7 +20,7 @@ const CartCheckout = () => {
   const [applyShippingFee, setApplyShippingFee] = useState(true);
   const shippingFee = 3.99;
 
-  // Payment form intormation
+  // Email
   const emailRegex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
   const [validEmail, setValidEmail] = useState();
   const [userEmail, setUserEmail] = useState("");
@@ -31,6 +34,301 @@ const CartCheckout = () => {
     }
   };
 
+  // Address validation
+  // Name
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+
+  // Street Address
+  const [deliveryStreetAddress, setDeliveryStreetAddress] = useState("");
+
+  // Aparment/Unit
+  const [deliveryApartment, setDeliveryApartment] = useState("");
+
+  // City
+  const [deliveryCity, setDeliveryCity] = useState("");
+
+  // Zip Code
+  const [deliveryZipCode, setDeliveryZipCode] = useState("");
+  const [validZipCode, setValidZipCode] = useState();
+  const ZipCodeEx = /[0-9]{5}/;
+
+  const handleZipCode = (event) => {
+    setDeliveryZipCode(event.target.value);
+    if (!ZipCodeEx.test(event.target.value) || event.target.value.length != 5) {
+      console.log("Invalid Zip Code");
+      setValidZipCode(false);
+    } else {
+      console.log("Valid Zip Code");
+      setValidZipCode(true);
+    }
+  };
+
+  // State
+  const [deliveryState, setDeliveryState] = useState("Alabama");
+  const states = [
+    {
+      name: "Alabama",
+      abbreviation: "AL",
+    },
+    {
+      name: "Alaska",
+      abbreviation: "AK",
+    },
+    {
+      name: "American Samoa",
+      abbreviation: "AS",
+    },
+    {
+      name: "Arizona",
+      abbreviation: "AZ",
+    },
+    {
+      name: "Arkansas",
+      abbreviation: "AR",
+    },
+    {
+      name: "California",
+      abbreviation: "CA",
+    },
+    {
+      name: "Colorado",
+      abbreviation: "CO",
+    },
+    {
+      name: "Connecticut",
+      abbreviation: "CT",
+    },
+    {
+      name: "Delaware",
+      abbreviation: "DE",
+    },
+    {
+      name: "District Of Columbia",
+      abbreviation: "DC",
+    },
+    {
+      name: "Federated States Of Micronesia",
+      abbreviation: "FM",
+    },
+    {
+      name: "Florida",
+      abbreviation: "FL",
+    },
+    {
+      name: "Georgia",
+      abbreviation: "GA",
+    },
+    {
+      name: "Guam",
+      abbreviation: "GU",
+    },
+    {
+      name: "Hawaii",
+      abbreviation: "HI",
+    },
+    {
+      name: "Idaho",
+      abbreviation: "ID",
+    },
+    {
+      name: "Illinois",
+      abbreviation: "IL",
+    },
+    {
+      name: "Indiana",
+      abbreviation: "IN",
+    },
+    {
+      name: "Iowa",
+      abbreviation: "IA",
+    },
+    {
+      name: "Kansas",
+      abbreviation: "KS",
+    },
+    {
+      name: "Kentucky",
+      abbreviation: "KY",
+    },
+    {
+      name: "Louisiana",
+      abbreviation: "LA",
+    },
+    {
+      name: "Maine",
+      abbreviation: "ME",
+    },
+    {
+      name: "Marshall Islands",
+      abbreviation: "MH",
+    },
+    {
+      name: "Maryland",
+      abbreviation: "MD",
+    },
+    {
+      name: "Massachusetts",
+      abbreviation: "MA",
+    },
+    {
+      name: "Michigan",
+      abbreviation: "MI",
+    },
+    {
+      name: "Minnesota",
+      abbreviation: "MN",
+    },
+    {
+      name: "Mississippi",
+      abbreviation: "MS",
+    },
+    {
+      name: "Missouri",
+      abbreviation: "MO",
+    },
+    {
+      name: "Montana",
+      abbreviation: "MT",
+    },
+    {
+      name: "Nebraska",
+      abbreviation: "NE",
+    },
+    {
+      name: "Nevada",
+      abbreviation: "NV",
+    },
+    {
+      name: "New Hampshire",
+      abbreviation: "NH",
+    },
+    {
+      name: "New Jersey",
+      abbreviation: "NJ",
+    },
+    {
+      name: "New Mexico",
+      abbreviation: "NM",
+    },
+    {
+      name: "New York",
+      abbreviation: "NY",
+    },
+    {
+      name: "North Carolina",
+      abbreviation: "NC",
+    },
+    {
+      name: "North Dakota",
+      abbreviation: "ND",
+    },
+    {
+      name: "Northern Mariana Islands",
+      abbreviation: "MP",
+    },
+    {
+      name: "Ohio",
+      abbreviation: "OH",
+    },
+    {
+      name: "Oklahoma",
+      abbreviation: "OK",
+    },
+    {
+      name: "Oregon",
+      abbreviation: "OR",
+    },
+    {
+      name: "Palau",
+      abbreviation: "PW",
+    },
+    {
+      name: "Pennsylvania",
+      abbreviation: "PA",
+    },
+    {
+      name: "Puerto Rico",
+      abbreviation: "PR",
+    },
+    {
+      name: "Rhode Island",
+      abbreviation: "RI",
+    },
+    {
+      name: "South Carolina",
+      abbreviation: "SC",
+    },
+    {
+      name: "South Dakota",
+      abbreviation: "SD",
+    },
+    {
+      name: "Tennessee",
+      abbreviation: "TN",
+    },
+    {
+      name: "Texas",
+      abbreviation: "TX",
+    },
+    {
+      name: "Utah",
+      abbreviation: "UT",
+    },
+    {
+      name: "Vermont",
+      abbreviation: "VT",
+    },
+    {
+      name: "Virgin Islands",
+      abbreviation: "VI",
+    },
+    {
+      name: "Virginia",
+      abbreviation: "VA",
+    },
+    {
+      name: "Washington",
+      abbreviation: "WA",
+    },
+    {
+      name: "West Virginia",
+      abbreviation: "WV",
+    },
+    {
+      name: "Wisconsin",
+      abbreviation: "WI",
+    },
+    {
+      name: "Wyoming",
+      abbreviation: "WY",
+    },
+  ];
+
+  const handleDeliveryState = (event) => {
+    setDeliveryState(event.target.value);
+  };
+
+  // Phone Number
+  const PhoneNumEx = /[0-9]{3}-[0-9]{3}-[0-9]{4}/;
+  const [userPhoneNum, setUserPhoneNum] = useState("");
+  const [validPhoneNum, setValidPhoneNum] = useState();
+
+  const handlePhoneNum = (event) => {
+    setUserPhoneNum(event.target.value);
+    if (
+      !PhoneNumEx.test(event.target.value) ||
+      event.target.value.length != 12
+    ) {
+      console.log("Invalid Phone Number");
+      setValidPhoneNum(false);
+    } else {
+      console.log("Valid Phone Number");
+      setValidPhoneNum(true);
+    }
+  };
+
+  // Calcuate price of items
   const calcuatePrice = (pretotal) => {
     setPreTax(pretotal);
 
@@ -89,6 +387,42 @@ const CartCheckout = () => {
     );
   };
 
+  // Order Function
+  const [confirmButtonClicked, setConfirmButtonClicked] = useState(false);
+  const [canOrder, setCanOrder] = useState();
+
+  const confirmOrder = () => {
+    setConfirmButtonClicked(true);
+    if (
+      userEmail == "" ||
+      firstName == "" ||
+      lastName == "" ||
+      deliveryStreetAddress == "" ||
+      deliveryCity == "" ||
+      deliveryCity == "" ||
+      deliveryZipCode == "" ||
+      userPhoneNum == ""
+    ) {
+      setCanOrder(false);
+      console.log("Not all fields have been filled out");
+    } else {
+      const orderData = {
+        email: userEmail,
+        firstName: firstName,
+        lastName: lastName,
+        streetAddress: deliveryStreetAddress,
+        apartment: deliveryApartment,
+        city: deliveryCity,
+        state: deliveryState,
+        zipCode: deliveryZipCode,
+        phoneNumber: userPhoneNum,
+      };
+      setCanOrder(true);
+      console.log(orderData);
+      navigate("/payment");
+    }
+  };
+
   // Update cart info based on changes to the cart database
   useEffect(() => {
     fetchShoppingCartData();
@@ -130,6 +464,7 @@ const CartCheckout = () => {
                     type="text"
                     autoComplete="off"
                     className="input-field"
+                    placeholder="JohnDoe@example.com..."
                     onChange={(event) => handleEmail(event)}
                   />
                   {!validEmail && userEmail != "" && (
@@ -144,22 +479,128 @@ const CartCheckout = () => {
                 />
                 {/* Address input */}
                 <div className="address-form-container">
-                  <div className="form-section-text">Delivery Address</div>
+                  <div className="delivery-form-header">
+                    <div className="form-section-text">Delivery Address</div>
+                    <div className="form-section-subtext">
+                      * Is a requried field
+                    </div>
+                  </div>
                   <div className="form-names-input-container">
                     <div className="name-input-container">
-                      <div>First Name</div>
-                      <input type="text" className="input-field" />
+                      <div>First Name*</div>
+                      <input
+                        type="text"
+                        className="input-field"
+                        placeholder="John..."
+                        onChange={(event) => setFirstName(event.target.value)}
+                      />
                     </div>
                     <div className="name-input-container">
-                      <div>Last Name</div>
-                      <input type="text" className="input-field" />
+                      <div>Last Name*</div>
+                      <input
+                        type="text"
+                        className="input-field"
+                        placeholder="Doe..."
+                        onChange={(event) => setLastName(event.target.value)}
+                      />
                     </div>
                   </div>
+                  {/* street address */}
                   <div className="street-input-container">
-                    <div>Street Address</div>
-                    <input type="text" className="input-field-address" />
+                    <div>Street Address*</div>
+                    <input
+                      type="text"
+                      className="input-field-address"
+                      placeholder="12345 A Street..."
+                      onChange={(event) =>
+                        setDeliveryStreetAddress(event.target.value)
+                      }
+                    />
+                  </div>
+                  {/* Apartment / Unit input */}
+                  <div className="street-input-container">
+                    <div>Apartment/Unit</div>
+                    <input
+                      type="text"
+                      className="input-field-address"
+                      placeholder="Apt 22/Unit A..."
+                      onChange={(event) =>
+                        setDeliveryApartment(event.target.value)
+                      }
+                    />
+                  </div>
+                  {/* City and state */}
+                  <div className="form-names-input-container">
+                    <div className="name-input-container">
+                      <div>City*</div>
+                      <input
+                        type="text"
+                        className="input-field"
+                        placeholder="Chicago..."
+                        onChange={(event) =>
+                          setDeliveryCity(event.target.value)
+                        }
+                      />
+                    </div>
+                    <div className="name-input-container">
+                      <div>State*</div>
+                      <select
+                        value={deliveryState}
+                        className="state-dropdown"
+                        onChange={handleDeliveryState}
+                      >
+                        {states.map((state, index) => (
+                          <option value={state.name} key={index}>
+                            {state.abbreviation}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                  {/* zip code and phone number */}
+                  <div className="form-names-input-container">
+                    <div className="name-input-container">
+                      <div>Zip Code*</div>
+                      <input
+                        type="text"
+                        autoComplete="off"
+                        className="input-field"
+                        placeholder="12345..."
+                        onChange={(event) => handleZipCode(event)}
+                      />
+                      {!validZipCode && deliveryZipCode != "" && (
+                        <div className="invalid-email">
+                          Not a valid zip code!
+                        </div>
+                      )}
+                    </div>
+                    <div className="name-input-container">
+                      <div>Phone Number*</div>
+                      <input
+                        type="text"
+                        className="input-field"
+                        onChange={(event) => handlePhoneNum(event)}
+                        placeholder="123-456-7890"
+                      />
+                      <div className="invalid-email">
+                        {!validPhoneNum &&
+                          userPhoneNum != "" &&
+                          "Not a valid phone number"}
+                      </div>
+                    </div>
                   </div>
                 </div>
+              </div>
+              {/* Confirm Order Button */}
+              <div className="confirm-container">
+                <button onClick={confirmOrder} className="confirm-order-button">
+                  Confirm Order
+                </button>
+                {!canOrder && confirmButtonClicked && (
+                  <div className="fields-not-filled-error">
+                    Not all fields have been filled out!
+                  </div>
+                )}
               </div>
             </div>
           </div>

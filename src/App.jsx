@@ -16,6 +16,7 @@ import CartCheckout from "./Pages/Checkout/CartCheckout";
 // importing styles
 import "./App.css";
 import { supabase } from "./Client";
+import Payment from "./Pages/Payment/Payment";
 
 function App() {
   // Adding unique session id for each user
@@ -39,6 +40,7 @@ function App() {
             element={<Individiual />}
           />
           <Route path="/checkout" element={<CartCheckout />} />
+          <Route path="/payment" element={<Payment />} />
         </Routes>
         <Footer />
       </div>

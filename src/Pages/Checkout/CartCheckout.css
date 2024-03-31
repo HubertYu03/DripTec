@@ -109,7 +109,11 @@
 
 .form-section-text {
     font-size: 30px;
-    margin-bottom: 20px;
+}
+
+.form-section-subtext {
+    font-size: 14px;
+    color: gray;
 }
 
 .email-form-container {
@@ -128,9 +132,23 @@
     padding: 5px;
 }
 
+.state-dropdown {
+    border: none;
+    background: rgb(225, 225, 225);
+
+    height: 30px;
+    padding: 5px;
+}
+
 .invalid-email {
     color: red;
     font-size: 14px;
+}
+
+.delivery-form-header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
 }
 
 .form-names-input-container {
@@ -145,7 +163,7 @@
     display: flex;
     flex-direction: column;
 
-    width: 45%;
+    width: 48%;
 
     gap: 10px;
     margin-bottom: 20px;
@@ -167,5 +185,36 @@
     background: rgb(225, 225, 225);
     height: 20px;
     padding: 5px;
+}
+
+.confirm-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+
+    margin-top: 20px;
+}
+
+.confirm-order-button {
+    border: none;
+
+    font-family: "Rubik", sans;
+
+    width: 150px;
+    height: 40px;
+    
+    transition: 0.2s;
+}
+
+.confirm-order-button:hover {
+    cursor: pointer;
+    color: white;
+    background: black;
+}
+
+.fields-not-filled-error {
+    color: red;
 }
 
