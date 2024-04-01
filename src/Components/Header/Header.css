@@ -9,40 +9,46 @@
   .header-container {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
   
 	height: 115px;
+	line-height: 115px;
 
 	color: white;
 	background-color: black;
   }
   
-  .Menu-icon {
-	margin-left: 80px;
+  .UserName {
+	display: flex;
+	flex-direction: row;
+	position: absolute;
+	left: 0;
+	margin-left: 10%;
 
-	width: 140px;
+	font-family: "Rubik", sans-serif;
+	font-size: larger;
 
-	font-size: 40px;
-	color: white;
   }
-  
+
   .Title {
 	font-size: 50px;
 	font-family: "Rubik Mono One", monospace;
 	color: white;
+	cursor: pointer;
+
   }
   
   .search-bag-container {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
-	margin-right: 80px;
+	position: absolute;
+	right: 0;
+	margin-right: 10%;
 
-	width: 140px;
-
-	font-size: 30px;
+	font-size: 40px;
 	color: white; 
+	cursor: pointer;
   }
 
   .secondheader-container {
@@ -50,12 +56,35 @@
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	gap: 125px;
 
-	height: 60px;
+	padding-right: 1%;
+
+	gap: 7%;
+	
+
+	height: 60px;	
+	line-height: 60px;
 
 	font-size: 25px;
 	font-family: "Rubik Mono One", monospace;
 
 	border: 1px solid black;
+  }
+
+  .Shirts{
+	cursor: pointer;
+  }
+
+  .Hoodies{
+	cursor: pointer;
+  }
+
+  .Pants{
+	cursor: pointer;
+  }
+
+  @media only screen and (max-width: 600px) {
+	.Title {
+		font-size: 30px;
+	}
   }

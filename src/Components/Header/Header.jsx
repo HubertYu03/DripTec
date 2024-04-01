@@ -1,25 +1,61 @@
 import "./Header.css";
 
 //Icons
-import { FiMenu } from "react-icons/fi";
-import { FaSearch } from "react-icons/fa";
 import { MdOutlineShoppingBag } from "react-icons/md";
 
+//Navigate
+import { useNavigate } from "react-router-dom";
+
 const Header = () => {
+  let navigate = useNavigate();
+
+  const loggedIn = false;
+
+  //   const handleClick = () => {
+  // 	navigate("/");
+  //   };
+
+  const handleClick = (route) => {
+    navigate(route);
+  };
+
   return (
     <div>
       <div className="header-container">
-        <FiMenu className="Menu-icon" />
-        <div className="Title">DRIPTEC</div>
-        <div className="search-bag-container">
-          <FaSearch />
+        {loggedIn ? (
+          <div className="UserName">John Doe</div>
+        ) : (
+          <div className="UserName">Guest</div>
+        )}
+        <div className="Title" onClick={() => handleClick("/")}>
+          DRIPTEC
+        </div>
+        <div
+          className="search-bag-container"
+          onClick={() => handleClick("checkout")}
+        >
           <MdOutlineShoppingBag />
         </div>
       </div>
       <div className="secondheader-container">
-        <div>SHIRTS</div>
-        <div>HOODIES</div>
-        <div>PANTS</div>
+        <div
+          className="Shirts"
+          onClick={() => handleClick("/shoppingCategories")}
+        >
+          SHIRTS
+        </div>
+        <div
+          className="Hoodies"
+          onClick={() => handleClick("/shoppingCategories")}
+        >
+          HOODIES
+        </div>
+        <div
+          className="Pants"
+          onClick={() => handleClick("/shoppingCategories")}
+        >
+          PANTS
+        </div>
       </div>
     </div>
   );

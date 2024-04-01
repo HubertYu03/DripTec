@@ -1,0 +1,181 @@
+/* Import google font: Rubik */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+.Page-Container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+
+	margin-top: 100px;
+	margin-bottom: 200px;
+}
+
+.Image-Container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+	padding: 20px;
+
+	width: 40%;
+	height: 600px;
+
+	/* border: solid 1px black; */
+}
+
+.Big-Pic {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	padding: 10px;
+
+	width: 500px;
+
+	/* border: solid 1px black; */
+}
+
+.Info-Container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+
+	width: 500px;
+
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+	/* border: solid 1px black; */
+}
+
+.General-Info {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+
+	width: 80%;
+	height: 90%;
+
+	font-family: "Rubik", sans-serif;
+	font-size: 30px;	
+
+	/* border: solid 1px black; */
+}
+
+.General-info-header {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+
+	height: 45%;
+
+	/* border: solid 1px; */
+
+}
+
+.Cost {
+	font-family: "Rubik", sans-serif;
+	font-size: 24px;
+}
+.Sizes {
+	display: flex;
+	justify-content: left;
+	gap: 5%;
+
+	font-family: "Rubik", sans-serif;
+	font-size: 19px;
+}
+
+.Order-parameters {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	height: 23%;
+}
+
+.size-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	width: 135px;
+	height: 43px;
+
+	border: none;
+	border-radius: 5px;
+
+	font-family: "Rubik", sans-serif;
+	
+	transition: 0.2s;
+}
+
+.size-button-selected {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	width: 135px;
+	height: 43px;
+
+	border: none;
+	border-radius: 5px;
+
+	background-color: black;
+	color: white;
+
+	font-family: "Rubik", sans-serif;
+}
+
+.size-button:hover {
+	cursor: pointer;
+	background-color: black;
+	color: white;
+}
+
+.Cart{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	height: 60px;
+
+	border: none;
+	border-radius: 10px;
+
+	color: white;
+	background-color: rgb(194, 0, 0);
+
+	font-family: "Rubik", sans-serif;
+	font-size: 24px;
+
+	transition: 0.2s;
+}
+
+.Cart:hover {
+	cursor: pointer;
+
+	background-color: rgb(138, 1, 1);
+}
+
+.Details-container{
+	font-family: "Rubik", sans-serif;
+	font-size: 16px;	
+	font-weight: 100;
+	color: gray;
+
+	display: flex;
+	flex-direction: column;
+}
+
+.detail {
+	margin-bottom: 10px;
+}
+
+.success-container {
+	margin-bottom: 40px;
+
+	font-family: "Rubik", sans-serif;
+	font-size: 20px;
+	color: rgb(194, 0, 0);
+}

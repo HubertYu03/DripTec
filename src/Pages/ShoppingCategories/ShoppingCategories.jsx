@@ -133,6 +133,7 @@ const HomePage = () => {
               type="checkbox"
               name="clothingType"
               value="shirts"
+              className="shopping-categories-input"
               onClick={handleTypePreferences}
             />
             <label htmlFor="shirts">Shirts</label>
@@ -141,6 +142,7 @@ const HomePage = () => {
               type="checkbox"
               name="clothingType"
               value="hoodies"
+              className="shopping-categories-input"
               onClick={handleTypePreferences}
             />
             <label htmlFor="hoodies">Hoodies</label>
@@ -149,6 +151,7 @@ const HomePage = () => {
               type="checkbox"
               name="clothingType"
               value="pants"
+              className="shopping-categories-input"
               onClick={handleTypePreferences}
             />
             <label htmlFor="pants">Pants</label>
@@ -160,6 +163,7 @@ const HomePage = () => {
               type="radio"
               name="sort"
               value="bestSelling"
+              className="shopping-categories-input"
               onClick={handleSortPreference}
             />
             <label htmlFor="bestSelling">Best Selling</label>
@@ -168,6 +172,7 @@ const HomePage = () => {
               type="radio"
               name="sort"
               value="aToZ"
+              className="shopping-categories-input"
               onClick={handleSortPreference}
             />
             <label htmlFor="aToZ">Alphabetically, A-Z</label>
@@ -176,6 +181,7 @@ const HomePage = () => {
               type="radio"
               name="sort"
               value="zToA"
+              className="shopping-categories-input"
               onClick={handleSortPreference}
             />
             <label htmlFor="zToA">Alphabetically, Z-A</label>
@@ -184,6 +190,7 @@ const HomePage = () => {
               type="radio"
               name="sort"
               value="lowToHigh"
+              className="shopping-categories-input"
               onClick={handleSortPreference}
             />
             <label htmlFor="lowToHigh">Price, Low to High</label>
@@ -192,6 +199,7 @@ const HomePage = () => {
               type="radio"
               name="sort"
               value="highToLow"
+              className="shopping-categories-input"
               onClick={handleSortPreference}
             />
             <label htmlFor="highToLow">Price, High to Low</label>
@@ -200,6 +208,7 @@ const HomePage = () => {
               type="radio"
               name="sort"
               value="oldToNew"
+              className="shopping-categories-input"
               onClick={handleSortPreference}
             />
             <label htmlFor="oldToNew">Date, Old to New</label>
@@ -208,6 +217,7 @@ const HomePage = () => {
               type="radio"
               name="sort"
               value="newToOld"
+              className="shopping-categories-input"
               onClick={handleSortPreference}
             />
             <label htmlFor="newToOld">Date, New to Old</label>
