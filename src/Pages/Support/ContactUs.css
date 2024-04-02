@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+.contact-us-header {
+    font-family: "Rubik Mono One", monospace;
+    font-size: 25px;
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+
+.contact-us-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    width: 60vw;
+    max-width: 600px;
+    min-width: 200px;
+    margin: 0 auto;
+    
+}
+
+.contact-us-fieldset {
+    border: none;
+}
+
+.contact-us-info {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border-color: black;
+}
+
+input[type="submit"] {
+    margin-top: 3px;
+    margin-bottom: 50px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 12px;
+    padding-right: 12px;
+
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+}
