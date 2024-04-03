@@ -1,0 +1,89 @@
+/*.Login-container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+
+	border: 1px solid black;
+}
+
+.Login{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+	left: 0;
+
+
+	border: 1px solid black;
+}
+
+.Form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	width: 600px; 
+	height: 400px;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	background-color: #f9f9f9;
+
+	border: 1px solid black;
+}*/
+
+.login-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh; /* Make the container full height of the viewport */
+  }
+
+.login-title {
+	margin-bottom: 20px; /* Adjust the margin as needed */
+}
+  .login-form {
+	width: 600px; /* Set a fixed width for the form */
+	height: 400px;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	background-color: #f9f9f9;
+  }
+  
+  .form-group {
+	margin-bottom: 20px; /* Add space between form fields */
+  }
+  
+  .form-group label {
+	display: block; /* Make labels block-level elements */
+	margin-bottom: 5px; /* Add space below labels */
+  }
+  
+  .form-group input[type="email"],
+  .form-group input[type="password"] {
+	width: 100%; /* Make inputs full width */
+	padding: 8px; /* Adjust padding as needed */
+	border: 1px solid #ccc;
+	border-radius: 4px;
+  }
+  
+  .submit-btn {
+	width: 100%; /* Make button full width */
+	padding: 10px;
+	border: none;
+	border-radius: 4px;
+	background-color: #ffffff;
+	color: #000000;
+	cursor: pointer;
+
+	border: 1px solid black;
+  }
+  
+  .submit-btn:hover {
+	background-color: #000000;
+	color: white;
+  }
+  
