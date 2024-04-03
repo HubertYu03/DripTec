@@ -442,10 +442,10 @@ const CartCheckout = () => {
             },
             trackingNumber: uuid(),
             payed: false,
+            sessionID: localStorage.getItem("sessionID"),
           },
         ])
         .select();
-
       navigate("/payment");
     }
   };
@@ -621,7 +621,7 @@ const CartCheckout = () => {
               {/* Confirm Order Button */}
               <div className="confirm-container">
                 <button onClick={confirmOrder} className="confirm-order-button">
-                  Confirm Order
+                  Checkout
                 </button>
                 {!canOrder && confirmButtonClicked && (
                   <div className="fields-not-filled-error">
