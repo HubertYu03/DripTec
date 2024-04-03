@@ -1,6 +1,6 @@
 // importing libraries
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { lazy, useEffect, useState } from "react";
 import { v4 as uuid } from "uuid";
 
 // importing components
@@ -12,11 +12,11 @@ import HomePage from "./Pages/Home/HomePage";
 import ShoppingCategories from "./Pages/ShoppingCategories/ShoppingCategories";
 import Individiual from "./Pages/Individual/Individual";
 import CartCheckout from "./Pages/Checkout/CartCheckout";
+const Payment = lazy(() => import("./Pages/Payment/Payment"));
 
 // importing styles
 import "./App.css";
 import { supabase } from "./Client";
-import Payment from "./Pages/Payment/Payment";
 
 function App() {
   // Adding unique session id for each user

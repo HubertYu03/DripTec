@@ -191,7 +191,7 @@ const Payment = () => {
               </div>
             </div>
             <button className="your-order-edit-button" onClick={handleSubmit}>
-              Submit
+              Place Order
             </button>
           </div>
         </div>
