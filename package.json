@@ -12,7 +12,6 @@
   "dependencies": {
     "@mahiraltinkaya/react-masked-input": "^1.0.5",
     "@supabase/supabase-js": "^2.39.8",
-    "axios": "^1.6.8",
     "framer-motion": "^11.0.22",
     "primereact": "^10.6.2",
     "react": "^18.2.0",

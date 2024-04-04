@@ -6,7 +6,6 @@ import { supabase } from "../../Client";
 import { InputMask } from "primereact/inputmask";
 
 import Cards from "react-credit-cards-2";
-import axios from "axios";
 
 // importing styles
 import "./Payment.css";
@@ -14,8 +13,15 @@ import "react-credit-cards-2/dist/es/styles-compiled.css";
 import SummaryCard from "./SummaryCard";
 
 const Payment = () => {
+  // navigatation
+  let navigate = useNavigate();
+
+  const handleNoConfirmedOrders = () => {
+    navigate("/checkout");
+  };
+
   // Constant varables
-  const URL = "https://api.exchangerate-api.com/v4/latest/usd";
+  // const URL = "https://api.exchangerate-api.com/v4/latest/usd";
   const [order, setOrder] = useState({});
   const [confirmedOrder, setConfirmedOrder] = useState(false);
   const [creditCardInfo, setCreditCardinfo] = useState({
@@ -27,16 +33,7 @@ const Payment = () => {
   const [focus, setFocus] = useState("");
   const [validCardNumber, setValidCardNumber] = useState(false);
 
-  const cvcEx = /[0-9]{3}/;
   const creditCardEx = /[0-9]/;
-  const nameEx = /[a-z]/;
-  const validThruex = /[0-9]{4}/;
-
-  let navigate = useNavigate();
-
-  const handleNoConfirmedOrders = () => {
-    navigate("/checkout");
-  };
 
   // Fetching user order
   const fetchOrder = async () => {
@@ -66,8 +63,10 @@ const Payment = () => {
     const { name, value } = evt.target;
     setCreditCardinfo((prev) => ({ ...prev, [name]: value }));
     if (!creditCardEx.test(evt.target.value)) {
+      setValidCardNumber(false);
       console.log("InvalidCard");
     } else {
+      setValidCardNumber(true);
       console.log("Valid Card");
     }
   };
@@ -80,8 +79,22 @@ const Payment = () => {
     setFocus("");
   };
 
-  const handleSubmit = () => {
-    console.log(creditCardInfo);
+  const handleSubmit = async () => {
+    if (
+      creditCardInfo.number == "" ||
+      creditCardInfo.name == "" ||
+      creditCardInfo.expiry == "" ||
+      creditCardInfo.cvc == ""
+    ) {
+      console.log("Not all fields have been filled out or field errors");
+    } else {
+      console.log(creditCardInfo);
+      let { data, error } = await supabase
+        .from("Orders")
+        .update({ paymentInfo: creditCardInfo, payed: true })
+        .eq("id", order.id)
+        .select();
+    }
   };
 
   // Edit order button
@@ -90,10 +103,6 @@ const Payment = () => {
   };
 
   useEffect(() => {
-    axios.get(URL).then((res) => {
-      console.log(res.data.rates);
-    });
-
     fetchOrder();
   }, []);
 
@@ -132,6 +141,20 @@ const Payment = () => {
                 />
               </div>
             </div>
+            <div className="delivery-address-container">
+              <div className="delivery-address-title">Delivery Address</div>
+              <div className="delivery-address-info-container">
+                <div className="delivery-address-text">
+                  {order.address.street} {order.address.apartment}
+                </div>
+                <div className="delivery-address-text">
+                  {order.address.city}, {order.address.state}
+                </div>
+                <div className="delivery-address-text">
+                  {order.address.zipCode}
+                </div>
+              </div>
+            </div>
             <div className="payment-info-title">Payment Info</div>
             <div className="payment-input-container">
               <div className="payment-card-image-container">
@@ -154,6 +177,11 @@ const Payment = () => {
                   onChange={handleCardNumber}
                   onFocus={handleNormalFocus}
                 />
+                {!validCardNumber && creditCardInfo.number != "" && (
+                  <div className="credit-card-number-error">
+                    Invalid Card Number
+                  </div>
+                )}
                 <input
                   type="text"
                   name="name"
@@ -171,13 +199,14 @@ const Payment = () => {
                     type="tel"
                     name="expiry"
                     placeholder="Valid Thru"
-                    pattern="\d\d/\d\d"
                     className="input-field-small"
                     required
                     onChange={handleInputChange}
                     onFocus={handleNormalFocus}
                   />
-                  <input
+                  <InputMask
+                    mask="999"
+                    slotChar=""
                     type="tel"
                     name="cvc"
                     placeholder="CVC"
