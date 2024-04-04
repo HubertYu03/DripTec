@@ -491,12 +491,32 @@ const CartCheckout = () => {
 
   // Fetching Order Data
   const fetchOrders = async () => {
+    // fetching order data
     const { data, error } = await supabase
       .from("Orders")
       .select("*")
       .eq("sessionID", localStorage.getItem("sessionID"));
+
+    // fetching cart data
+    const { data: Cart, error: CartError } = await supabase
+      .from("Cart")
+      .select("*")
+      .eq("sessionID", localStorage.getItem("sessionID"));
+
+    if (CartError) {
+      console.error(CartError);
+    } else {
+      // If there is nothing in the cart, cancel the order
+      if (Cart.length == 0) {
+        let { data, error } = await supabase
+          .from("Orders")
+          .delete()
+          .eq("sessionID", localStorage.getItem("sessionID"));
+      }
+    }
+
     if (data.length == 0) {
-      console.log("No Data");
+      console.log("No Orders Yet");
     } else {
       // Import the order data that was previously submitted
       setUserEmail(data[0].email);
@@ -517,6 +537,11 @@ const CartCheckout = () => {
       setUserPhoneNum(data[0].phoneNumber);
       setValidPhoneNum(true);
     }
+  };
+
+  // If the user clicked the continue shopping button
+  const handleContinueShopping = () => {
+    navigate("/shoppingCategories");
   };
 
   // Update cart info based on changes to the cart database
@@ -714,7 +739,12 @@ const CartCheckout = () => {
         <div className="empty-cart-container">
           <div className="empty-cart-title">No items in Cart</div>
           <div className="empty-cart-subtext">Fill that cart up!</div>
-          <button className="continue-shopping-button">Coninue Shopping</button>
+          <button
+            className="continue-shopping-button"
+            onClick={handleContinueShopping}
+          >
+            Continue Shopping
+          </button>
         </div>
       )}
     </div>
