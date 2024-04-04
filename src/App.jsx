@@ -11,6 +11,7 @@ import Footer from "./Components/Footer/Footer";
 import HomePage from "./Pages/Home/HomePage";
 import ShoppingCategories from "./Pages/ShoppingCategories/ShoppingCategories";
 import Individiual from "./Pages/Individual/Individual";
+import ContactUs from "./Pages/Support/ContactUs";
 import CartCheckout from "./Pages/Checkout/CartCheckout";
 
 // importing styles
@@ -39,6 +40,7 @@ function App() {
             path="/individualProduct/:Category/:id"
             element={<Individiual />}
           />
+          <Route path="/contactus" element={<ContactUs />} />
           <Route path="/checkout" element={<CartCheckout />} />
           <Route path="/payment" element={<Payment />} />
         </Routes>
