@@ -136,7 +136,7 @@ const HomePage = () => {
               className="shopping-categories-input"
               onClick={handleTypePreferences}
             />
-            <label for="shirts">Shirts</label>
+            <label htmlFor="shirts">Shirts</label>
             <input
               id="hoodies"
               type="checkbox"
@@ -145,7 +145,7 @@ const HomePage = () => {
               className="shopping-categories-input"
               onClick={handleTypePreferences}
             />
-            <label for="hoodies">Hoodies</label>
+            <label htmlFor="hoodies">Hoodies</label>
             <input
               id="pants"
               type="checkbox"
@@ -154,7 +154,7 @@ const HomePage = () => {
               className="shopping-categories-input"
               onClick={handleTypePreferences}
             />
-            <label for="pants">Pants</label>
+            <label htmlFor="pants">Pants</label>
           </fieldset>
           <p>Sort By</p>
           <fieldset className="sortBy">
@@ -166,7 +166,7 @@ const HomePage = () => {
               className="shopping-categories-input"
               onClick={handleSortPreference}
             />
-            <label for="bestSelling">Best Selling</label>
+            <label htmlFor="bestSelling">Best Selling</label>
             <input
               id="aToZ"
               type="radio"
@@ -184,7 +184,7 @@ const HomePage = () => {
               className="shopping-categories-input"
               onClick={handleSortPreference}
             />
-            <label for="zToA">Alphabetically, Z-A</label>
+            <label htmlFor="zToA">Alphabetically, Z-A</label>
             <input
               id="lowToHigh"
               type="radio"
@@ -193,7 +193,7 @@ const HomePage = () => {
               className="shopping-categories-input"
               onClick={handleSortPreference}
             />
-            <label for="lowToHigh">Price, Low to High</label>
+            <label htmlFor="lowToHigh">Price, Low to High</label>
             <input
               id="highToLow"
               type="radio"
@@ -202,7 +202,7 @@ const HomePage = () => {
               className="shopping-categories-input"
               onClick={handleSortPreference}
             />
-            <label for="highToLow">Price, High to Low</label>
+            <label htmlFor="highToLow">Price, High to Low</label>
             <input
               id="oldToNew"
               type="radio"
@@ -211,7 +211,7 @@ const HomePage = () => {
               className="shopping-categories-input"
               onClick={handleSortPreference}
             />
-            <label for="oldToNew">Date, Old to New</label>
+            <label htmlFor="oldToNew">Date, Old to New</label>
             <input
               id="newToOld"
               type="radio"
@@ -220,7 +220,7 @@ const HomePage = () => {
               className="shopping-categories-input"
               onClick={handleSortPreference}
             />
-            <label for="newToOld">Date, New to Old</label>
+            <label htmlFor="newToOld">Date, New to Old</label>
           </fieldset>
         </div>
 

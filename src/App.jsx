@@ -16,7 +16,6 @@ const Payment = lazy(() => import("./Pages/Payment/Payment"));
 
 // importing styles
 import "./App.css";
-import { supabase } from "./Client";
 
 function App() {
   // Adding unique session id for each user

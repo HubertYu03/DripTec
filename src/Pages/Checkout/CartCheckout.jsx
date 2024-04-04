@@ -14,6 +14,9 @@ const CartCheckout = () => {
   // State for the current shopping cart
   const [cart, setCart] = useState([]);
 
+  // State for if there are orders already
+  const [confirmedOrder, setConfirmedOrder] = useState(false);
+
   // States for calculating price
   const [preTax, setPreTax] = useState(0);
   const [priceTotal, setPriceTotal] = useState(0);
@@ -66,7 +69,9 @@ const CartCheckout = () => {
   };
 
   // State
-  const [deliveryState, setDeliveryState] = useState("Alabama");
+  const [deliveryState, setDeliveryState] = useState("");
+  const [defaultStatePos, setDefaultStatePos] = useState(0);
+
   const states = [
     {
       name: "Alabama",
@@ -426,10 +431,17 @@ const CartCheckout = () => {
 
       const { data, error } = await supabase
         .from("Orders")
-        .insert([
-          {
+        .select("*")
+        .eq("sessionID", localStorage.getItem("sessionID"));
+
+      if (data.length != 0 && data[0].payed == false) {
+        const { data: update, error } = await supabase
+          .from("Orders")
+          .update({
             email: userEmail,
-            username: firstName + " " + lastName,
+            firstName: firstName,
+            lastName: lastName,
+            phoneNumber: userPhoneNum,
             itemsData: cart,
             cost: priceTotal,
             paymentInfo: null,
@@ -443,17 +455,75 @@ const CartCheckout = () => {
             trackingNumber: uuid(),
             payed: false,
             sessionID: localStorage.getItem("sessionID"),
-          },
-        ])
-        .select();
+          })
+          .eq("id", data[0].id);
+        console.log("Updated");
+      } else {
+        const { data, error } = await supabase
+          .from("Orders")
+          .insert([
+            {
+              email: userEmail,
+              firstName: firstName,
+              lastName: lastName,
+              phoneNumber: userPhoneNum,
+              itemsData: cart,
+              cost: priceTotal,
+              paymentInfo: null,
+              address: {
+                street: deliveryStreetAddress,
+                apartment: deliveryApartment,
+                city: deliveryCity,
+                state: deliveryState,
+                zipCode: deliveryZipCode,
+              },
+              trackingNumber: uuid(),
+              payed: false,
+              sessionID: localStorage.getItem("sessionID"),
+            },
+          ])
+          .select();
+        console.log("Added");
+      }
       navigate("/payment");
+    }
+  };
+
+  // Fetching Order Data
+  const fetchOrders = async () => {
+    const { data, error } = await supabase
+      .from("Orders")
+      .select("*")
+      .eq("sessionID", localStorage.getItem("sessionID"));
+    if (data.length == 0) {
+      console.log("No Data");
+    } else {
+      // Import the order data that was previously submitted
+      setUserEmail(data[0].email);
+      setValidEmail(true);
+      setFirstName(data[0].firstName);
+      setLastName(data[0].lastName);
+      setDeliveryStreetAddress(data[0].address.street);
+      setDeliveryApartment(data[0].address.apartment);
+      setDeliveryCity(data[0].address.city);
+      setDeliveryState(data[0].address.state);
+      for (let i = 0; i < states.length; i++) {
+        if (data[0].address.state == states[i].name) {
+          setDefaultStatePos(i);
+        }
+      }
+      setDeliveryZipCode(data[0].address.zipCode);
+      setValidZipCode(true);
+      setUserPhoneNum(data[0].phoneNumber);
+      setValidPhoneNum(true);
     }
   };
 
   // Update cart info based on changes to the cart database
   useEffect(() => {
     fetchShoppingCartData();
-  }, [cart]);
+    fetchOrders();
+  }, []);
 
   return (
     <div className="checkout-page-container">
@@ -492,6 +562,7 @@ const CartCheckout = () => {
                     autoComplete="off"
                     className="input-field"
                     placeholder="JohnDoe@example.com..."
+                    value={userEmail}
                     onChange={(event) => handleEmail(event)}
                   />
                   {!validEmail && userEmail != "" && (
@@ -519,6 +590,7 @@ const CartCheckout = () => {
                         type="text"
                         className="input-field"
                         placeholder="John..."
+                        value={firstName}
                         onChange={(event) => setFirstName(event.target.value)}
                       />
                     </div>
@@ -528,6 +600,7 @@ const CartCheckout = () => {
                         type="text"
                         className="input-field"
                         placeholder="Doe..."
+                        value={lastName}
                         onChange={(event) => setLastName(event.target.value)}
                       />
                     </div>
@@ -539,6 +612,7 @@ const CartCheckout = () => {
                       type="text"
                       className="input-field-address"
                       placeholder="12345 A Street..."
+                      value={deliveryStreetAddress}
                       onChange={(event) =>
                         setDeliveryStreetAddress(event.target.value)
                       }
@@ -551,6 +625,7 @@ const CartCheckout = () => {
                       type="text"
                       className="input-field-address"
                       placeholder="Apt 22/Unit A..."
+                      value={deliveryApartment}
                       onChange={(event) =>
                         setDeliveryApartment(event.target.value)
                       }
@@ -564,6 +639,7 @@ const CartCheckout = () => {
                         type="text"
                         className="input-field"
                         placeholder="Chicago..."
+                        value={deliveryCity}
                         onChange={(event) =>
                           setDeliveryCity(event.target.value)
                         }
@@ -572,8 +648,8 @@ const CartCheckout = () => {
                     <div className="name-input-container">
                       <div>State*</div>
                       <select
-                        value={deliveryState}
                         className="state-dropdown"
+                        defaultValue={states[defaultStatePos].name}
                         onChange={handleDeliveryState}
                       >
                         {states.map((state, index) => (
@@ -593,6 +669,7 @@ const CartCheckout = () => {
                         autoComplete="off"
                         className="input-field"
                         placeholder="12345..."
+                        value={deliveryZipCode}
                         onChange={(event) => handleZipCode(event)}
                       />
                       {!validZipCode && deliveryZipCode != "" && (
@@ -606,6 +683,7 @@ const CartCheckout = () => {
                       <input
                         type="text"
                         className="input-field"
+                        value={userPhoneNum}
                         onChange={(event) => handlePhoneNum(event)}
                         placeholder="123-456-7890"
                       />
