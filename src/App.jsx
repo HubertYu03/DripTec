@@ -13,6 +13,9 @@ import ShoppingCategories from "./Pages/ShoppingCategories/ShoppingCategories";
 import Individiual from "./Pages/Individual/Individual";
 import CartCheckout from "./Pages/Checkout/CartCheckout";
 const Payment = lazy(() => import("./Pages/Payment/Payment"));
+const PaymentComplete = lazy(() =>
+  import("./Pages/PaymentComplete/PaymentComplete")
+);
 
 // importing styles
 import "./App.css";
@@ -40,6 +43,10 @@ function App() {
           />
           <Route path="/checkout" element={<CartCheckout />} />
           <Route path="/payment" element={<Payment />} />
+          <Route
+            path="/paymentComplete/:orderNumber"
+            element={<PaymentComplete />}
+          />
         </Routes>
         <Footer />
       </div>

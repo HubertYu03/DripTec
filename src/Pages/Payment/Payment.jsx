@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { IoArrowBack } from "react-icons/io5";
 import { supabase } from "../../Client";
 import { InputMask } from "primereact/inputmask";
-
 import Cards from "react-credit-cards-2";
 
 // importing styles
@@ -94,6 +93,13 @@ const Payment = () => {
         .update({ paymentInfo: creditCardInfo, payed: true })
         .eq("id", order.id)
         .select();
+
+      let { data: Cart, error: CartError } = await supabase
+        .from("Cart")
+        .delete()
+        .eq("sessionID", localStorage.getItem("sessionID"));
+
+      navigate(`/paymentComplete/${data.trackingNumber}`);
     }
   };
 

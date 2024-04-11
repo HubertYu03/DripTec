@@ -507,7 +507,7 @@ const CartCheckout = () => {
       console.error(CartError);
     } else {
       // If there is nothing in the cart, cancel the order
-      if (Cart.length == 0) {
+      if (Cart.length == 0 && data[0].payed == false) {
         let { data, error } = await supabase
           .from("Orders")
           .delete()
