@@ -2,6 +2,10 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../../Client";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
+
+// importing styles
+import "./PaymentComplete.css";
 
 const PaymentComplete = () => {
   const { orderNumber } = useParams();
@@ -20,9 +24,11 @@ const PaymentComplete = () => {
       // Check if order exists
       if (Orders.length != 0) {
         setOrderTrue(true);
+        setOrder(Orders[0]);
+        console.log(Orders[0]);
+      } else {
+        console.log("This order does not exist");
       }
-      setOrder(Orders[0]);
-      console.log(Orders[0]);
     }
   };
 
@@ -31,15 +37,25 @@ const PaymentComplete = () => {
   }, []);
 
   return (
-    <div>
+    <div className="payment-complete-page-container">
       {orderTrue && (
-        <div>
-          <div>
+        <div className="order-complete-info-container">
+          <div className="order-complete-title">
             Thank you for your order {order.firstName + " " + order.lastName}!
           </div>
-          <div>Your order number is {order.trackingNumber}</div>
-          <div>
-            You can track your order <a href="">here.</a>
+          <div className="order-complete-text">
+            Your order number is{" "}
+            <span
+              style={{
+                fontWeight: "bold",
+              }}
+            >
+              {order.trackingNumber}
+            </span>
+            .
+          </div>
+          <div className="order-complete-text">
+            You can track your order <Link to={"/trackYourPackage"}>here</Link>.
           </div>
         </div>
       )}

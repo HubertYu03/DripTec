@@ -19,6 +19,7 @@ const PaymentComplete = lazy(() =>
 
 // importing styles
 import "./App.css";
+import TrackPackage from "./Pages/TrackPackage/TrackPackage";
 
 function App() {
   // Adding unique session id for each user
@@ -47,6 +48,7 @@ function App() {
             path="/paymentComplete/:orderNumber"
             element={<PaymentComplete />}
           />
+          <Route path="/trackYourPackage" element={<TrackPackage />} />
         </Routes>
         <Footer />
       </div>
