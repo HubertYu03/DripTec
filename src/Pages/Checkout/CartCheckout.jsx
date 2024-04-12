@@ -1,12 +1,12 @@
 // importing libraries
-import { useEffect, useState } from "react";
+import { lazy, useEffect, useState } from "react";
 import { supabase } from "../../Client";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 
 // importing styles
 import "./CartCheckout.css";
-import CartCard from "../../Components/CartCard/CartCard";
+const CartCard = lazy(() => import("../../Components/CartCard/CartCard"));
 
 const CartCheckout = () => {
   let navigate = useNavigate();
