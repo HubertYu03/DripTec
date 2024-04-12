@@ -1,6 +1,6 @@
 // importing libraries
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import { useEffect } from "react";
+import { lazy, useEffect, useState } from "react";
 import { v4 as uuid } from "uuid";
 
 // importing components
@@ -13,11 +13,14 @@ import ShoppingCategories from "./Pages/ShoppingCategories/ShoppingCategories";
 import Individiual from "./Pages/Individual/Individual";
 import ContactUs from "./Pages/Support/ContactUs";
 import CartCheckout from "./Pages/Checkout/CartCheckout";
+const Payment = lazy(() => import("./Pages/Payment/Payment"));
+const PaymentComplete = lazy(() =>
+  import("./Pages/PaymentComplete/PaymentComplete")
+);
 
 // importing styles
 import "./App.css";
-import { supabase } from "./Client";
-import Payment from "./Pages/Payment/Payment";
+import TrackPackage from "./Pages/TrackPackage/TrackPackage";
 
 function App() {
   // Adding unique session id for each user
@@ -43,6 +46,11 @@ function App() {
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/checkout" element={<CartCheckout />} />
           <Route path="/payment" element={<Payment />} />
+          <Route
+            path="/paymentComplete/:orderNumber"
+            element={<PaymentComplete />}
+          />
+          <Route path="/trackYourPackage" element={<TrackPackage />} />
         </Routes>
         <Footer />
       </div>
