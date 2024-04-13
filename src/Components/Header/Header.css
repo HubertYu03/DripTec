@@ -68,7 +68,7 @@
 	font-size: 25px;
 	font-family: "Rubik Mono One", monospace;
 
-	border: 1px solid black;
+	border-bottom: black solid 1px;
   }
 
   .Shirts{
