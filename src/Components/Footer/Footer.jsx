@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import "./Footer.css";
 import { AiFillInstagram } from "react-icons/ai";
 import { AiFillFacebook } from "react-icons/ai";
@@ -50,7 +52,7 @@ const Footer = () => {
           <a href="">Contact Us</a>
         </p>
         <p className="SUPPORT-p">
-          <a href="">Track Your Order</a>
+          <Link to={"/trackYourPackage"}>Track Your Order</Link>
         </p>
         <p className="SUPPORT-p">
           <a href="">Refund Policy</a>
