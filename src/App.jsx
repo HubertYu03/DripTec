@@ -10,6 +10,7 @@ import HomePage from "./Pages/Home/HomePage";
 import ShoppingCategories from "./Pages/ShoppingCategories/ShoppingCategories";
 import Individiual from "./Pages/Individual/Individual";
 import LoginPage from "./Pages/LoginPage/LoginPage";
+import SignUpPage from "./Pages/SignUpPage/SignUpPage";
 
 import "./App.css";
 

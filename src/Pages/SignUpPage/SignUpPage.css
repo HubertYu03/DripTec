@@ -1,0 +1,24 @@
+.signup-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh; /* Make the container full height of the viewport */
+  }
+
+.signup-form {
+	width: 600px; 
+	height: 400px;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	background-color: #f9f9f9;
+	}
+
+.signup-title {
+	margin-bottom: 20px;
+}
+
+.signup-form label {
+	display: block; /* Make labels block-level elements */
+	margin-bottom: 5px; 
+	}
