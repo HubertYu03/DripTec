@@ -1,6 +1,7 @@
-import { useState } from "react";
 import { createClient } from "@supabase/supabase-js";
-import "./LoginPage.css"; // Import CSS file for styling
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import "./LoginPage.css";
 
 const supabase = createClient(
   "https://qphhyphvmtmijyprcvwj.supabase.co",
@@ -10,8 +11,11 @@ const supabase = createClient(
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
+    event.preventDefault();
+
     try {
       const { user, error } = await supabase.auth.signIn({
         email,
@@ -23,11 +27,11 @@ const LoginForm = () => {
       }
 
       console.log("User logged in:", user);
-      // Handle successful login (e.g., redirect user to dashboard)
+      navigate("/homepage");
     } catch (error) {
       console.error("Login failed:", error.message);
-      // Handle login error (e.g., display error message to user)
     }
+
     // Reset the form after submission
     setEmail("");
     setPassword("");
